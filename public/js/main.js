@@ -181,7 +181,21 @@ function openDataDialog() {
   <pre>npm run import:osm -- --bbox 30.752,76.560,30.782,76.600
 npm run build:data -- --source data/source/campus.osm.source.json
 npm run build:engine &amp;&amp; npm start</pre>
-  <p style="color:var(--muted);font-size:12.5px">Dataset hash <code>${esc(campus.meta.sourceHash)}</code> · ${campus.graph.nodes.length} graph nodes · ${campus.graph.edges.length} edges · ${campus.places.length} places.</p>`;
+  <p style="color:var(--muted);font-size:12.5px">Dataset hash <code>${esc(campus.meta.sourceHash)}</code> · ${campus.graph.nodes.length} graph nodes · ${campus.graph.edges.length} edges · ${campus.places.length} places.</p>
+  <hr class="credits-sep">
+  <div class="project-credits">
+    <div class="credits-header">PROJECT DEVELOPED BY</div>
+    <div class="credits-grid">
+      <div class="credit-card">
+        <div class="credit-name">Faraaz Mahboob Abeer</div>
+        <div class="credit-reg">Registration No.: 25BCS11486</div>
+      </div>
+      <div class="credit-card">
+        <div class="credit-name">Himanshu Mani Tripathi</div>
+        <div class="credit-reg">Registration No.: 25BCS12148</div>
+      </div>
+    </div>
+  </div>`;
   $('#dataDialog').showModal();
 }
 
