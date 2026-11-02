@@ -19,7 +19,7 @@ const ICON = {
 };
 const icon = (m) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="${ICON[m] || ICON.straight}"/></svg>`;
 
-const state = { from: null, to: null, profile: 'walk', selected: null, pick: null, result: null, seq: 0 };
+const state = { from: null, to: null, profile: 'walk', selected: null, pick: null, result: null, seq: 0, minimized: false, lastMobileState: 'half' };
 let campus, world, stage, labels, routeView, visualizer, index, placeById;
 
 async function boot() {
@@ -35,10 +35,13 @@ async function boot() {
     labels = new Labels($('#labels'), stage, world, campus, (id) => selectPlace(id, true));
     routeView = new RouteView(stage);
     visualizer = new DijkstraVisualizer(stage, world);
-    visualizer.onClose(() => { $('#visMapBtn')?.classList.remove('on'); });
+    visualizer.onClose(() => {
+      $('#visMapBtn')?.classList.remove('on');
+      if (document.documentElement.dataset.layout === 'mobile') setSheetState('half');
+    });
     stage.onFrame(() => { labels.update(); $('#compassNeedle').style.transform = `rotate(${(-stage.view().azimuth * 180) / Math.PI}deg)`; });
     wireUI(); restoreFromHash();
-    window.__app = { stage, world, state, campus, routeView, visualizer, labels, THREE, selectPlace, setEndpoint, requestRoute };
+    window.__app = { stage, world, state, campus, routeView, visualizer, labels, THREE, selectPlace, setEndpoint, requestRoute, minimizePanel, restorePanel, toggleMinimizePanel };
     requestAnimationFrame(() => requestAnimationFrame(() => { loading.classList.add('done'); document.body.dataset.ready = '1'; }));
     const h = await health(); if (!h.ok) showStatus('The C++ routing engine is not running. Build it with "npm run build:engine" and restart the server.', true);
   } catch (e) {
@@ -72,12 +75,16 @@ async function requestRoute() {
   } catch (e) { if (seq === state.seq) { clearRoute(false); showStatus(`Routing failed: ${e.message}`, true); } }
 }
 function clearRoute(resetFields) {
-  state.result = null; routeView?.clear(); visualizer?.hide(); $('#visMapBtn')?.classList.remove('on'); $('#result').hidden = true; $('#steps').innerHTML = '';
+  state.result = null; routeView?.clear(); visualizer?.hide(); $('#visMapBtn')?.classList.remove('on'); $('#result').hidden = true; $('#steps').innerHTML = ''; updateRestoreBadge();
   if (resetFields) { state.seq++; setEndpoint('from', null, { route: false }); setEndpoint('to', null, { route: false }); $('#clearBtn').hidden = true; showStatus(''); }
 }
 function renderResult(r) {
+  if (document.documentElement.dataset.layout === 'mobile' && getSheetState() === 'collapsed') {
+    setSheetState('half');
+  }
   $('#result').hidden = false; $('#distBig').textContent = fmtDist(r.distance); $('#timeBig').textContent = `${fmtTime(r.duration)} · ${r.steps.length - 1} steps${r.profile === 'accessible' ? ' · step-free' : ''}`;
   $('#engineNote').textContent = `C++ Dijkstra: ${r.stats.expanded} nodes expanded in ${r.stats.micros} µs. Indicative route on an estimated layout.`;
+  updateRestoreBadge();
 
   const ol = $('#steps'); ol.innerHTML = '';
   r.steps.forEach((s, i) => {
@@ -199,6 +206,269 @@ function restoreFromHash() {
 }
 function setProfile(pf, route = true) { state.profile = pf; $$('.seg button').forEach((b) => { const on = b.dataset.profile === pf; b.classList.toggle('on', on); b.setAttribute('aria-checked', String(on)); }); updateHash(); if (route) requestRoute(); }
 
+/* ------------------------------------------------------------------ view mode & mobile bottom sheet */
+function setSheetState(state) {
+  const panel = $('#panel');
+  if (!panel) return;
+  panel.classList.remove('sheet-collapsed', 'sheet-half', 'sheet-expanded', 'collapsed');
+  if (state === 'collapsed') {
+    panel.classList.add('sheet-collapsed', 'collapsed');
+  } else if (state === 'expanded') {
+    panel.classList.add('sheet-expanded');
+  } else {
+    panel.classList.add('sheet-half');
+  }
+}
+
+function getSheetState() {
+  const panel = $('#panel');
+  if (!panel) return 'half';
+  if (panel.classList.contains('sheet-collapsed') || panel.classList.contains('collapsed')) return 'collapsed';
+  if (panel.classList.contains('sheet-expanded')) return 'expanded';
+  return 'half';
+}
+
+function updateMinBtnIcon(isMin) {
+  const minBtn = $('#minPanelBtn');
+  if (!minBtn) return;
+  if (isMin) {
+    minBtn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>';
+    minBtn.title = 'Restore panel';
+    minBtn.setAttribute('aria-label', 'Restore control panel');
+  } else {
+    minBtn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>';
+    minBtn.title = 'Minimize panel';
+    minBtn.setAttribute('aria-label', 'Minimize control panel');
+  }
+}
+
+function updateRestoreBadge() {
+  const badge = $('#restoreBadge');
+  if (!badge) return;
+  if (state.result && state.result.found) {
+    badge.textContent = fmtDist(state.result.distance);
+    badge.hidden = false;
+  } else {
+    badge.hidden = true;
+  }
+}
+
+function minimizePanel() {
+  state.minimized = true;
+  const layout = document.documentElement.dataset.layout || 'desktop';
+  const panel = $('#panel');
+  const restoreBtn = $('#restorePanelBtn');
+
+  if (layout === 'mobile') {
+    state.lastMobileState = panel.classList.contains('sheet-expanded') ? 'expanded' : 'half';
+    setSheetState('collapsed');
+    if (restoreBtn) restoreBtn.hidden = true;
+    updateMinBtnIcon(true);
+  } else {
+    panel.classList.add('is-minimized');
+    if (restoreBtn) {
+      restoreBtn.hidden = false;
+      updateRestoreBadge();
+    }
+  }
+}
+
+function restorePanel() {
+  state.minimized = false;
+  const layout = document.documentElement.dataset.layout || 'desktop';
+  const panel = $('#panel');
+  const restoreBtn = $('#restorePanelBtn');
+
+  panel.classList.remove('is-minimized');
+  if (restoreBtn) restoreBtn.hidden = true;
+  updateMinBtnIcon(false);
+
+  if (layout === 'mobile') {
+    const targetState = state.lastMobileState || (state.result ? 'expanded' : 'half');
+    setSheetState(targetState);
+  }
+}
+
+function toggleMinimizePanel() {
+  const layout = document.documentElement.dataset.layout || 'desktop';
+  if (layout === 'mobile') {
+    const cur = getSheetState();
+    if (cur === 'collapsed') restorePanel();
+    else minimizePanel();
+  } else {
+    if (state.minimized) restorePanel();
+    else minimizePanel();
+  }
+}
+
+function initViewMode() {
+  const getSavedMode = () => {
+    try {
+      return localStorage.getItem('cu_nav_view_mode') || 'auto';
+    } catch {
+      return 'auto';
+    }
+  };
+
+  const computeLayout = (mode) => {
+    if (mode === 'laptop') return 'desktop';
+    if (mode === 'mobile') return 'mobile';
+    const w = window.innerWidth;
+    if (w < 768) return 'mobile';
+    if (w <= 1024) return 'tablet';
+    return 'desktop';
+  };
+
+  const applyLayout = (mode, save = true) => {
+    if (save) {
+      try { localStorage.setItem('cu_nav_view_mode', mode); } catch {}
+    }
+    const layout = computeLayout(mode);
+    document.documentElement.dataset.viewMode = mode;
+    document.documentElement.dataset.layout = layout;
+
+    $$('.view-mode-btn').forEach((b) => {
+      const on = b.dataset.mode === mode;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-checked', String(on));
+      if (b.dataset.mode === 'auto') {
+        const layoutName = layout === 'desktop' ? 'Laptop' : layout.charAt(0).toUpperCase() + layout.slice(1);
+        b.title = `Automatic (${layoutName} view active)`;
+      }
+    });
+
+    const panel = $('#panel');
+    const restoreBtn = $('#restorePanelBtn');
+    if (state.minimized) {
+      if (layout === 'mobile') {
+        panel.classList.remove('is-minimized');
+        setSheetState('collapsed');
+        if (restoreBtn) restoreBtn.hidden = true;
+        updateMinBtnIcon(true);
+      } else {
+        panel.classList.add('is-minimized');
+        if (restoreBtn) {
+          restoreBtn.hidden = false;
+          updateRestoreBadge();
+        }
+      }
+    } else {
+      if (layout === 'mobile') {
+        if (!panel.classList.contains('sheet-collapsed') && !panel.classList.contains('sheet-expanded') && !panel.classList.contains('sheet-half')) {
+          setSheetState('half');
+        }
+      } else {
+        panel.classList.remove('is-minimized');
+        if (restoreBtn) restoreBtn.hidden = true;
+      }
+      updateMinBtnIcon(false);
+    }
+
+    if (stage && typeof stage.resize === 'function') {
+      stage.resize();
+    }
+  };
+
+  $$('.view-mode-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      hideSuggest();
+      const mode = btn.dataset.mode;
+      applyLayout(mode, true);
+    });
+  });
+
+  let resizeTimer = null;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const curMode = getSavedMode();
+      if (curMode === 'auto') {
+        applyLayout('auto', false);
+      } else if (stage && typeof stage.resize === 'function') {
+        stage.resize();
+      }
+    }, 60);
+  });
+
+  applyLayout(getSavedMode(), false);
+}
+
+function initBottomSheet() {
+  const handle = $('#sheetHandle');
+  const panel = $('#panel');
+  if (!handle || !panel) return;
+
+  handle.addEventListener('click', () => {
+    if (document.documentElement.dataset.layout !== 'mobile') return;
+    const cur = getSheetState();
+    if (cur === 'collapsed') {
+      restorePanel();
+    } else if (cur === 'half') {
+      const hasResult = state.result && !$('#result').hidden;
+      if (hasResult) {
+        state.minimized = false;
+        updateMinBtnIcon(false);
+        setSheetState('expanded');
+      } else {
+        minimizePanel();
+      }
+    } else {
+      state.minimized = false;
+      updateMinBtnIcon(false);
+      setSheetState('half');
+    }
+  });
+
+  let startY = 0, isDragging = false, startState = 'half';
+  const onTouchStart = (e) => {
+    if (document.documentElement.dataset.layout !== 'mobile') return;
+    const touch = e.touches ? e.touches[0] : e;
+    startY = touch.clientY;
+    isDragging = true;
+    startState = getSheetState();
+  };
+
+  const onTouchEnd = (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+    const touch = e.changedTouches ? e.changedTouches[0] : e;
+    const dy = touch.clientY - startY;
+    if (Math.abs(dy) > 30) {
+      if (dy > 0) {
+        if (startState === 'expanded') {
+          state.minimized = false;
+          updateMinBtnIcon(false);
+          setSheetState('half');
+        } else if (startState === 'half') {
+          minimizePanel();
+        }
+      } else {
+        if (startState === 'collapsed') {
+          restorePanel();
+        } else if (startState === 'half') {
+          state.minimized = false;
+          updateMinBtnIcon(false);
+          setSheetState('expanded');
+        }
+      }
+    }
+  };
+
+  handle.addEventListener('touchstart', onTouchStart, { passive: true });
+  handle.addEventListener('touchend', onTouchEnd, { passive: true });
+  handle.addEventListener('pointerdown', onTouchStart);
+  handle.addEventListener('pointerup', onTouchEnd);
+
+  for (const which of ['from', 'to']) {
+    $(`#${which}Input`)?.addEventListener('focus', () => {
+      if (document.documentElement.dataset.layout === 'mobile' && getSheetState() === 'collapsed') {
+        restorePanel();
+      }
+    });
+  }
+}
+
 /* ------------------------------------------------------------------ wiring */
 function wireUI() {
   for (const which of ['from', 'to']) {
@@ -220,6 +490,9 @@ function wireUI() {
   $('#clearBtn').addEventListener('click', () => { clearRoute(true); stage.resetView(); });
   const openVisualizer = async () => {
     routeView.stopFlythrough();
+    if (document.documentElement.dataset.layout === 'mobile') {
+      setSheetState('collapsed');
+    }
     if (!state.from || !state.to) {
       toast('Select a start and destination to visualize Dijkstra');
       return;
@@ -288,7 +561,16 @@ function wireUI() {
     b.classList.toggle('on'); const on = b.classList.contains('on'), k = b.dataset.layer;
     if (k === 'labels') labels.setVisible(on); else if (k === 'trees') world.layers.trees.visible = on; else if (k === 'graph') world.layers.graph.visible = on;
   }));
-  $('#sheetHandle').addEventListener('click', () => $('#panel').classList.toggle('collapsed'));
+  initViewMode();
+  initBottomSheet();
+  $('#minPanelBtn')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    hideSuggest();
+    toggleMinimizePanel();
+  });
+  $('#restorePanelBtn')?.addEventListener('click', () => {
+    restorePanel();
+  });
   // quick-pick chips
   const chips = [['gate-1', 'Main Gate'], ['d6-library', 'D6 Central Library'], ['b3-engineering', 'B3 – DSW'], ['b4-engineering', 'B4 – Kalpana Chawla'], ['food-republic', 'Food Republic'], ['sports-complex', 'Sports Complex'], ['fountain-plaza', 'Fountain']];
   $('#chips').innerHTML = chips.map(([id, n]) => `<button data-chip="${id}">${esc(n)}</button>`).join('');

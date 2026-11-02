@@ -105,8 +105,9 @@ export class Stage {
   resize() {
     const w = this.container.clientWidth || innerWidth, h = this.container.clientHeight || innerHeight;
     this.renderer.setSize(w, h, false); this.camera.aspect = w / h;
-    // keep the scene centred in the free area right of the planner panel on wide screens
-    const off = w > 900 ? 196 : 0;
+    // keep the scene centred in the free area right of the planner panel on wide screens (desktop/tablet layout)
+    const isMobile = document.documentElement.dataset.layout === 'mobile';
+    const off = (!isMobile && w > 900) ? 196 : 0;
     if (off) this.camera.setViewOffset(w, h, -off, 0, w, h); else this.camera.clearViewOffset();
     this.camera.updateProjectionMatrix(); this.w = w; this.h = h; this.dirty = true;
   }

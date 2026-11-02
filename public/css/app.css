@@ -67,6 +67,90 @@ body.picking #stage canvas { cursor: crosshair; }
 .lbl.is-start i, .lbl.is-end i { background: #fff; box-shadow: none; }
 :root[data-theme="dusk"] .lbl:not(.is-start):not(.is-end) { background: rgba(24, 31, 52, 0.9); color: #e8ecf8; border-color: rgba(255, 255, 255, 0.2); }
 
+/* ---------- floating restore control */
+.restore-pill {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  z-index: 15;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 5px 14px 5px 6px;
+  border-radius: 999px;
+  background: var(--glass);
+  backdrop-filter: blur(24px) saturate(170%);
+  -webkit-backdrop-filter: blur(24px) saturate(170%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.2s ease, background 0.15s ease;
+  user-select: none;
+}
+.restore-pill:hover {
+  transform: translateY(-1px) scale(1.02);
+  background: var(--glass-solid);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
+}
+.restore-pill:active {
+  transform: translateY(0) scale(0.98);
+}
+.restore-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
+}
+.restore-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.restore-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.restore-icon {
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  transition: color 0.15s ease;
+}
+.restore-pill:hover .restore-icon {
+  color: var(--ink);
+}
+:root[data-theme="dusk"] .restore-pill {
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+}
+:root[data-theme="dusk"] .restore-title {
+  color: #ffffff;
+}
+html[data-layout="tablet"] .restore-pill {
+  left: 14px;
+  top: 14px;
+}
+html[data-layout="mobile"] .restore-pill {
+  display: none !important;
+}
+
+/* Panel minimized state in desktop / tablet */
+#panel.is-minimized {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(-16px) scale(0.96) !important;
+  transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.2, 0.9, 0.3, 1) !important;
+}
+
 /* ---------- panel */
 .panel, #panel {
   position: absolute;
@@ -112,6 +196,60 @@ body.picking #stage canvas { cursor: crosshair; }
 .titles { flex: 1; min-width: 0; }
 .titles h1 { margin: 0; font-size: 17.5px; font-weight: 700; letter-spacing: -0.015em; color: var(--ink); text-shadow: 0 1px 2px rgba(0, 0, 0, 0.12); }
 .titles p { margin: 1px 0 0; font-size: 12px; color: var(--muted); font-weight: 500; }
+.brand-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+}
+.view-mode-seg {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 999px;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 2px 6px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+:root[data-theme="dusk"] .view-mode-seg {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2), 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+.view-mode-btn {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  width: 25px;
+  height: 25px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  transition: all 0.15s cubic-bezier(0.2, 0.9, 0.3, 1);
+  position: relative;
+}
+.view-mode-btn svg {
+  display: block;
+}
+.view-mode-btn:hover {
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.22);
+}
+.view-mode-btn.on {
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+:root[data-theme="dusk"] .view-mode-btn.on {
+  background: rgba(255, 255, 255, 0.28);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
 .icon-btn {
   width: 32px;
   height: 32px;
@@ -1071,23 +1209,340 @@ body.picking #stage canvas { cursor: crosshair; }
   background: rgba(245, 158, 11, 0.2);
 }
 
-/* ---------- small screens: bottom sheet */
-@media (max-width: 720px) {
-  #panel { left: 0; right: 0; top: auto; bottom: 0; width: 100%; max-height: 62vh; border-radius: 22px 22px 0 0; padding-bottom: env(safe-area-inset-bottom); transition: max-height 0.25s; }
-  #panel.collapsed { max-height: 150px; }
-  .vis-panel, #visualizerPanel {
-    left: 0;
-    right: 0;
+/* ==================================================================
+   RESPONSIVE VIEW MODES & DEVICE ADAPTATION
+   ================================================================== */
+
+/* ---------- Desktop Layout (Forced or screen > 1024px) */
+html[data-layout="desktop"] #panel {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  bottom: auto;
+  right: auto;
+  width: min(392px, calc(100vw - 32px));
+  max-height: calc(100% - 32px);
+  height: auto;
+  transform: none;
+  border-radius: 26px;
+}
+html[data-layout="desktop"] .sheet-handle {
+  display: none !important;
+}
+html[data-layout="desktop"] .map-tools {
+  top: 16px;
+  right: 16px;
+}
+html[data-layout="desktop"] .chips {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* ---------- Tablet Layout (Screen 768px - 1024px in Auto mode) */
+html[data-layout="tablet"] #panel {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  bottom: auto;
+  right: auto;
+  width: min(350px, calc(100vw - 28px));
+  max-height: calc(100% - 28px);
+  height: auto;
+  border-radius: 24px;
+  transform: none;
+}
+html[data-layout="tablet"] .sheet-handle {
+  display: none !important;
+}
+html[data-layout="tablet"] .map-tools {
+  top: 14px;
+  right: 14px;
+}
+html[data-layout="tablet"] .chips {
+  display: flex;
+  flex-wrap: wrap;
+}
+html[data-layout="tablet"] #visualizerPanel {
+  right: 14px;
+  bottom: 14px;
+  width: 380px;
+  max-height: 58vh;
+}
+
+/* ---------- Mobile Layout (Forced or screen < 768px in Auto mode) */
+html[data-layout="mobile"] #panel {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  right: auto;
+  top: auto;
+  bottom: 0;
+  width: min(520px, 100%);
+  border-radius: 24px 24px 0 0;
+  padding-bottom: max(10px, env(safe-area-inset-bottom, 0px));
+  z-index: 20;
+  transition: max-height 0.3s cubic-bezier(0.2, 0.9, 0.3, 1), height 0.3s cubic-bezier(0.2, 0.9, 0.3, 1);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+html[data-layout="mobile"] .sheet-handle {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 24px;
+  padding: 8px 0 4px;
+  background: transparent;
+  border: none;
+  cursor: grab;
+  touch-action: none;
+  position: relative;
+  z-index: 10;
+  flex: none;
+}
+html[data-layout="mobile"] .sheet-handle:active {
+  cursor: grabbing;
+}
+html[data-layout="mobile"] .sheet-handle span {
+  display: block;
+  width: 42px;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.22);
+  transition: background 0.15s ease, width 0.15s ease;
+}
+:root[data-theme="dusk"] html[data-layout="mobile"] .sheet-handle span {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* Bottom Sheet States */
+html[data-layout="mobile"] #panel.sheet-collapsed,
+html[data-layout="mobile"] #panel.collapsed {
+  max-height: 72px;
+  height: 72px;
+  overflow: hidden;
+}
+html[data-layout="mobile"] #panel.sheet-collapsed .planner,
+html[data-layout="mobile"] #panel.sheet-collapsed #result,
+html[data-layout="mobile"] #panel.sheet-collapsed #info,
+html[data-layout="mobile"] #panel.sheet-collapsed #status,
+html[data-layout="mobile"] #panel.collapsed .planner,
+html[data-layout="mobile"] #panel.collapsed #result,
+html[data-layout="mobile"] #panel.collapsed #info,
+html[data-layout="mobile"] #panel.collapsed #status {
+  display: none !important;
+}
+
+html[data-layout="mobile"] #panel.sheet-half {
+  max-height: 44vh;
+  height: auto;
+}
+
+html[data-layout="mobile"] #panel.sheet-expanded {
+  max-height: 84vh;
+  height: 84vh;
+}
+
+/* Mobile Header */
+html[data-layout="mobile"] .brand {
+  padding: 4px 14px 8px;
+  gap: 10px;
+}
+html[data-layout="mobile"] .logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+}
+html[data-layout="mobile"] .logo svg {
+  width: 20px;
+  height: 20px;
+}
+html[data-layout="mobile"] .titles h1 {
+  font-size: 15.5px;
+}
+html[data-layout="mobile"] .titles p {
+  font-size: 11px;
+}
+
+/* Mobile Fields & Inputs */
+html[data-layout="mobile"] .planner {
+  padding: 4px 14px 10px;
+}
+html[data-layout="mobile"] .fields {
+  gap: 8px;
+}
+html[data-layout="mobile"] .field {
+  padding: 3px 6px 3px 10px;
+  min-height: 40px;
+}
+html[data-layout="mobile"] .field input {
+  font-size: 14px;
+  padding-right: 32px;
+}
+html[data-layout="mobile"] .swap {
+  right: 40px;
+  width: 28px;
+  height: 28px;
+}
+html[data-layout="mobile"] .swap svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Mobile Chips Tray */
+html[data-layout="mobile"] .chips {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 7px;
+  margin-top: 10px;
+  padding: 2px 2px 6px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+html[data-layout="mobile"] .chips::-webkit-scrollbar {
+  display: none;
+}
+html[data-layout="mobile"] .chips button {
+  flex: none;
+  white-space: nowrap;
+  padding: 5px 11px;
+  font-size: 12px;
+}
+
+/* Mobile Data Notice */
+html[data-layout="mobile"] .data-notice {
+  margin-top: 8px;
+  padding: 4px 8px;
+  font-size: 11px;
+}
+
+/* Mobile Results & Steps */
+html[data-layout="mobile"] .result {
+  padding: 8px 14px 14px;
+}
+html[data-layout="mobile"] .big {
+  font-size: 26px;
+}
+html[data-layout="mobile"] .summary .actions {
+  flex-wrap: wrap;
+  gap: 6px;
+}
+html[data-layout="mobile"] .summary .actions button {
+  font-size: 12px;
+  padding: 6px 10px;
+}
+
+/* Mobile Map HUD Controls */
+html[data-layout="mobile"] .map-tools {
+  top: 10px;
+  right: 10px;
+  gap: 8px;
+  z-index: 10;
+}
+html[data-layout="mobile"] .round {
+  width: 38px;
+  height: 38px;
+}
+html[data-layout="mobile"] .round svg {
+  width: 26px;
+  height: 26px;
+}
+html[data-layout="mobile"] .tools-group button {
+  padding: 6px 10px;
+  font-size: 11.5px;
+}
+html[data-layout="mobile"] .round.mini {
+  width: 30px;
+  height: 30px;
+  font-size: 13px;
+}
+
+/* Mobile Search Suggestion Dropdown */
+html[data-layout="mobile"] #suggest {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  max-height: min(220px, 38vh);
+  z-index: 50;
+}
+
+/* Mobile Visualizer Panel */
+html[data-layout="mobile"] .vis-panel,
+html[data-layout="mobile"] #visualizerPanel {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: auto;
+  width: 100%;
+  max-height: 58vh;
+  border-radius: 22px 22px 0 0;
+  padding-bottom: max(10px, env(safe-area-inset-bottom, 0px));
+  z-index: 25;
+}
+
+/* Mobile Navigation Guide Card */
+html[data-layout="mobile"] .nav-help-card {
+  left: 10px;
+  right: 10px;
+  top: 56px;
+  max-width: none;
+  z-index: 30;
+}
+
+/* ---------- Fallback for narrow viewports prior to JS initialization */
+@media (max-width: 767px) {
+  html:not([data-layout="desktop"]) #panel {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     bottom: 0;
+    top: auto;
+    width: min(520px, 100%);
+    border-radius: 24px 24px 0 0;
+    padding-bottom: max(10px, env(safe-area-inset-bottom, 0px));
+    z-index: 20;
+  }
+  html:not([data-layout="desktop"]) .sheet-handle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    max-height: 52vh;
-    border-radius: 20px 20px 0 0;
-    padding-bottom: env(safe-area-inset-bottom);
+    height: 24px;
+    padding: 8px 0 4px;
+    background: transparent;
+    border: none;
+  }
+  html:not([data-layout="desktop"]) .sheet-handle span {
+    display: block;
+    width: 42px;
+    height: 5px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.22);
+  }
+  html:not([data-layout="desktop"]) .map-tools {
+    top: 10px;
+    right: 10px;
+    gap: 8px;
     z-index: 10;
   }
-  .sheet-handle { display: block; border: 0; background: none; padding: 8px 0 0; width: 100%; } .sheet-handle span { display: block; width: 38px; height: 4px; border-radius: 2px; background: var(--line); margin: 0 auto; }
-  .brand { padding-top: 6px; } .banner span u { display: none; }
-  .map-tools { top: 10px; right: 10px; } .big { font-size: 28px; }
-  #suggest { top: auto; bottom: calc(100% - 100px); max-height: 220px; }
+  html:not([data-layout="desktop"]) .chips {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 7px;
+    padding: 2px 2px 6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  html:not([data-layout="desktop"]) .chips::-webkit-scrollbar {
+    display: none;
+  }
+  html:not([data-layout="desktop"]) .chips button {
+    flex: none;
+    white-space: nowrap;
+  }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
