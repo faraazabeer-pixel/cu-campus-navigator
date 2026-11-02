@@ -95,11 +95,78 @@
       </div>
       <div id="chips" class="chips" aria-label="Quick picks"></div>
 
+      <!-- Mobile Action Bar (Preview Walk, Visualizer, Bookmark) -->
+      <div id="mobilePlanBar" class="mobile-plan-bar">
+        <button id="mobileVisBtn" class="glass icon-btn mobile-bar-icon" type="button" aria-label="Dijkstra Visualizer" title="Dijkstra Visualizer">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><circle cx="18" cy="6" r="3"/>
+            <line x1="8.5" y1="7.5" x2="15.5" y2="16.5"/><line x1="8.5" y1="6" x2="15" y2="6"/>
+          </svg>
+        </button>
+        <button id="mobilePreviewWalkBtn" class="primary mobile-preview-btn" type="button">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <span>Preview walk</span>
+        </button>
+        <button id="mobileBookmarkBtn" class="glass icon-btn mobile-bar-icon" type="button" aria-label="Save route bookmark" title="Save route">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+          </svg>
+        </button>
+      </div>
+
       <button id="dataBanner" class="data-notice" type="button" aria-label="Data Accuracy Notice: Estimated building positions and unverified walking distances">
         <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><line x1="12" y1="16" x2="12" y2="12" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="8" r="1" fill="currentColor"/></svg>
         <span><b>Data Accuracy Notice:</b> Estimated building positions & unverified walking distances. <u>Details</u></span>
       </button>
     </section>
+
+    <!-- Mobile Dedicated Route Preview State -->
+    <div id="mobilePreviewView" class="mobile-preview-view" hidden>
+      <div class="mobile-preview-header">
+        <button id="mobileBackBtn" class="glass icon-btn mobile-back-btn" type="button" aria-label="Back to route planning" title="Back">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+        </button>
+        <h2>Route Preview</h2>
+      </div>
+
+      <div class="mobile-preview-summary">
+        <div class="mobile-summary-left">
+          <div class="walker-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="mobile-dist-big" id="mobilePreviewDistBig">–</div>
+            <div class="mobile-time-sub" id="mobilePreviewTimeSub">–</div>
+          </div>
+        </div>
+        <button id="startWalkingBtn" class="primary start-walking-btn" type="button">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <span>Start walking</span>
+        </button>
+      </div>
+
+      <div class="mobile-preview-actions">
+        <button id="mobileRouteFlyBtn" class="glass mobile-sec-btn" type="button">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <span>Preview route</span>
+        </button>
+        <button id="mobileRouteShareBtn" class="glass mobile-sec-btn" type="button">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+          </svg>
+          <span>Share</span>
+        </button>
+      </div>
+
+      <div class="mobile-steps-scroll">
+        <ol id="mobileStepsList" class="mobile-steps-list"></ol>
+      </div>
+    </div>
 
     <div id="status" class="status" role="status" aria-live="polite" hidden></div>
 
@@ -228,6 +295,64 @@
       </div>
     </div>
   </aside>
+
+  <!-- Mobile Floating Map Settings Button -->
+  <button id="mobileSettingsBtn" class="glass mobile-settings-btn" type="button" aria-label="Map layers and settings" title="Map settings">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/>
+      <circle cx="8" cy="6" r="2.5" fill="currentColor"/><circle cx="16" cy="12" r="2.5" fill="currentColor"/><circle cx="9" cy="18" r="2.5" fill="currentColor"/>
+    </svg>
+  </button>
+
+  <!-- Mobile Compact Glassmorphism Popover -->
+  <div id="mobileSettingsPopover" class="glass mobile-settings-popover" role="dialog" aria-label="Map layers" hidden>
+    <div class="popover-header">
+      <span class="popover-title">Map Layers &amp; Controls</span>
+      <button id="mobileSettingsClose" class="icon-btn close-mini" type="button" aria-label="Close settings">×</button>
+    </div>
+    <div class="popover-body">
+      <div class="popover-row">
+        <div class="popover-label-group">
+          <span class="popover-row-icon">🏷️</span>
+          <span class="popover-row-name">Building Labels</span>
+        </div>
+        <button class="toggle-pill on" id="mobLayerLabels" type="button" role="switch" aria-checked="true">On</button>
+      </div>
+      <div class="popover-row">
+        <div class="popover-label-group">
+          <span class="popover-row-icon">🌳</span>
+          <span class="popover-row-name">Campus Trees</span>
+        </div>
+        <button class="toggle-pill on" id="mobLayerTrees" type="button" role="switch" aria-checked="true">On</button>
+      </div>
+      <div class="popover-row">
+        <div class="popover-label-group">
+          <span class="popover-row-icon">🕸️</span>
+          <span class="popover-row-name">Routing Graph</span>
+        </div>
+        <button class="toggle-pill" id="mobLayerGraph" type="button" role="switch" aria-checked="false">Off</button>
+      </div>
+      <div class="popover-row">
+        <div class="popover-label-group">
+          <span class="popover-row-icon">⚡</span>
+          <span class="popover-row-name">Dijkstra Visualizer</span>
+        </div>
+        <button class="toggle-pill" id="mobToggleVis" type="button">Open</button>
+      </div>
+      <hr class="popover-sep">
+      <div class="popover-row">
+        <div class="popover-label-group">
+          <span class="popover-row-icon">🧭</span>
+          <span class="popover-row-name">Camera View</span>
+        </div>
+        <div class="popover-btn-group">
+          <button id="mobViewTop" class="popover-mini-btn" type="button">2D</button>
+          <button id="mobView3d" class="popover-mini-btn on" type="button">3D</button>
+          <button id="mobResetNorth" class="popover-mini-btn" type="button" title="Reset North">North</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div id="mapTools" class="map-tools">
     <button id="compass" class="glass round" aria-label="Reset view to north" title="Reset view"><svg id="compassNeedle" viewBox="0 0 32 32" width="30" height="30"><path d="M16 3l5 13h-10z" fill="#e5484d"/><path d="M16 29l-5-13h10z" fill="#8b97ab"/><circle cx="16" cy="16" r="2" fill="#fff"/></svg></button>

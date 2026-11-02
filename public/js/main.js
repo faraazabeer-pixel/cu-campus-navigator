@@ -37,11 +37,12 @@ async function boot() {
     visualizer = new DijkstraVisualizer(stage, world);
     visualizer.onClose(() => {
       $('#visMapBtn')?.classList.remove('on');
+      $('#mobileVisBtn')?.classList.remove('on');
       if (document.documentElement.dataset.layout === 'mobile') setSheetState('half');
     });
     stage.onFrame(() => { labels.update(); $('#compassNeedle').style.transform = `rotate(${(-stage.view().azimuth * 180) / Math.PI}deg)`; });
     wireUI(); restoreFromHash();
-    window.__app = { stage, world, state, campus, routeView, visualizer, labels, THREE, selectPlace, setEndpoint, requestRoute, minimizePanel, restorePanel, toggleMinimizePanel };
+    window.__app = { stage, world, state, campus, routeView, visualizer, labels, THREE, selectPlace, setEndpoint, requestRoute, minimizePanel, restorePanel, toggleMinimizePanel, setMobileView, openVisualizer };
     requestAnimationFrame(() => requestAnimationFrame(() => { loading.classList.add('done'); document.body.dataset.ready = '1'; }));
     const h = await health(); if (!h.ok) showStatus('The C++ routing engine is not running. Build it with "npm run build:engine" and restart the server.', true);
   } catch (e) {
@@ -51,9 +52,15 @@ async function boot() {
 
 /* ------------------------------------------------------------------ endpoints & fields */
 const label = (e) => (!e ? '' : e.type === 'place' ? placeById.get(e.id).name : `Map point (${e.x.toFixed(0)}, ${e.z.toFixed(0)})`);
+function syncChips() {
+  const toId = state.to?.type === 'place' ? state.to.id : null;
+  $$('#chips button').forEach((b) => {
+    b.classList.toggle('active', b.dataset.chip === toId);
+  });
+}
 function setEndpoint(which, e, { route = true } = {}) {
   state[which] = e; const input = $(`#${which}Input`); input.value = label(e);
-  $(`[data-clear="${which}"]`).hidden = !e; syncLabels(); updateHash();
+  $(`[data-clear="${which}"]`).hidden = !e; syncLabels(); syncChips(); updateHash();
   if (route) requestRoute();
 }
 function syncLabels() { labels.setState({ start: state.from?.type === 'place' ? state.from.id : null, end: state.to?.type === 'place' ? state.to.id : null }); }
@@ -75,8 +82,29 @@ async function requestRoute() {
   } catch (e) { if (seq === state.seq) { clearRoute(false); showStatus(`Routing failed: ${e.message}`, true); } }
 }
 function clearRoute(resetFields) {
-  state.result = null; routeView?.clear(); visualizer?.hide(); $('#visMapBtn')?.classList.remove('on'); $('#result').hidden = true; $('#steps').innerHTML = ''; updateRestoreBadge();
+  state.result = null; routeView?.clear(); visualizer?.hide(); $('#visMapBtn')?.classList.remove('on'); $('#mobileVisBtn')?.classList.remove('on'); $('#result').hidden = true; $('#steps').innerHTML = ''; updateRestoreBadge();
+  const mobSteps = $('#mobileStepsList'); if (mobSteps) mobSteps.innerHTML = '';
+  setMobileView('plan');
+  syncChips();
   if (resetFields) { state.seq++; setEndpoint('from', null, { route: false }); setEndpoint('to', null, { route: false }); $('#clearBtn').hidden = true; showStatus(''); }
+}
+function setMobileView(view) {
+  const panel = $('#panel');
+  if (!panel) return;
+  if (view === 'preview') {
+    panel.dataset.mobileView = 'preview';
+    document.documentElement.dataset.mobileView = 'preview';
+    const previewView = $('#mobilePreviewView');
+    if (previewView) previewView.hidden = false;
+    if (document.documentElement.dataset.layout === 'mobile') {
+      setSheetState('half');
+    }
+  } else {
+    delete panel.dataset.mobileView;
+    delete document.documentElement.dataset.mobileView;
+    const previewView = $('#mobilePreviewView');
+    if (previewView) previewView.hidden = true;
+  }
 }
 function renderResult(r) {
   if (document.documentElement.dataset.layout === 'mobile' && getSheetState() === 'collapsed') {
@@ -85,6 +113,34 @@ function renderResult(r) {
   $('#result').hidden = false; $('#distBig').textContent = fmtDist(r.distance); $('#timeBig').textContent = `${fmtTime(r.duration)} · ${r.steps.length - 1} steps${r.profile === 'accessible' ? ' · step-free' : ''}`;
   $('#engineNote').textContent = `C++ Dijkstra: ${r.stats.expanded} nodes expanded in ${r.stats.micros} µs. Indicative route on an estimated layout.`;
   updateRestoreBadge();
+
+  // Update mobile dedicated route preview
+  const mobDist = $('#mobilePreviewDistBig');
+  const mobTime = $('#mobilePreviewTimeSub');
+  if (mobDist) mobDist.textContent = fmtDist(r.distance);
+  if (mobTime) mobTime.textContent = `${fmtTime(r.duration)} · ${r.steps.length - 1} steps${r.profile === 'accessible' ? ' · step-free' : ''}`;
+
+  const mobSteps = $('#mobileStepsList');
+  if (mobSteps) {
+    mobSteps.innerHTML = '';
+    r.steps.forEach((s, i) => {
+      const li = document.createElement('li');
+      li.className = 'mobile-step-card';
+      li.tabIndex = 0;
+      li.dataset.i = i;
+      const stepType = s.maneuver === 'depart' ? 'depart' : (s.maneuver === 'arrive' ? 'arrive' : 'turn');
+      li.innerHTML = `
+        <div class="mobile-step-icon ${stepType}">${icon(s.maneuver)}</div>
+        <div class="mobile-step-inst">${esc(s.instruction)}</div>
+        <div class="mobile-step-dist">${s.maneuver === 'arrive' ? '' : fmtDist(s.distance)}</div>
+      `;
+      li.addEventListener('click', () => {
+        $$('.mobile-step-card').forEach((c) => c.classList.toggle('active', +c.dataset.i === i));
+        focusStep(i);
+      });
+      mobSteps.appendChild(li);
+    });
+  }
 
   const ol = $('#steps'); ol.innerHTML = '';
   r.steps.forEach((s, i) => {
@@ -97,7 +153,9 @@ function renderResult(r) {
 }
 function focusStep(i) {
   const s = state.result?.steps[i]; if (!s) return;
-  $$('#steps li').forEach((li) => li.classList.toggle('active', +li.dataset.i === i)); routeView.stopFlythrough();
+  $$('#steps li').forEach((li) => li.classList.toggle('active', +li.dataset.i === i));
+  $$('.mobile-step-card').forEach((c) => c.classList.toggle('active', +c.dataset.i === i));
+  routeView.stopFlythrough();
   routeView.focusPoint(s.at[0], s.at[1], s.maneuver === 'arrive' ? 90 : 110);
 }
 
@@ -502,37 +560,12 @@ function wireUI() {
   $('#swapBtn').addEventListener('click', () => { const f = state.from, t = state.to; setEndpoint('from', t, { route: false }); setEndpoint('to', f, { route: false }); requestRoute(); });
   $$('.seg button').forEach((b) => b.addEventListener('click', () => setProfile(b.dataset.profile)));
   $('#clearBtn').addEventListener('click', () => { clearRoute(true); stage.resetView(); });
-  const openVisualizer = async () => {
-    routeView.stopFlythrough();
-    if (document.documentElement.dataset.layout === 'mobile') {
-      setSheetState('collapsed');
-    }
-    if (!state.from || !state.to) {
-      toast('Select a start and destination to visualize Dijkstra');
-      return;
-    }
-    if (state.result && state.result.trace && state.result.trace.length) {
-      visualizer.show(state.result, campus);
-      $('#visMapBtn')?.classList.add('on');
-    } else {
-      showStatus('Fetching C++ Dijkstra algorithm trace…');
-      try {
-        const r = await fetchRoute(state.from, state.to, state.profile, true);
-        showStatus('');
-        if (!r.found) { showStatus(r.message || 'No route found.', true); return; }
-        state.result = r;
-        visualizer.show(r, campus);
-        $('#visMapBtn')?.classList.add('on');
-      } catch (e) {
-        showStatus(`Failed to load visualizer trace: ${e.message}`, true);
-      }
-    }
-  };
   $('#visualizeBtn')?.addEventListener('click', openVisualizer);
   $('#visMapBtn')?.addEventListener('click', () => {
     if (visualizer && visualizer.group.visible) {
       visualizer.hide();
       $('#visMapBtn')?.classList.remove('on');
+      $('#mobileVisBtn')?.classList.remove('on');
     } else {
       openVisualizer();
     }
@@ -608,6 +641,196 @@ function wireUI() {
       if (el && !el.hidden) { el.hidden = true; state.selected = null; labels.setState({ selected: null }); }
     }
   });
+  wireMobileUI();
   addEventListener('hashchange', () => { /* manual edits of the URL */ });
+}
+
+async function openVisualizer() {
+  routeView.stopFlythrough();
+  if (document.documentElement.dataset.layout === 'mobile') {
+    setSheetState('collapsed');
+  }
+  if (!state.from && !state.to) {
+    toast('Visualizing Dijkstra from Gate 1 to D6 Library');
+    setEndpoint('from', { type: 'place', id: 'gate-1' }, { route: false });
+    setEndpoint('to', { type: 'place', id: 'd6-library' }, { route: false });
+  } else if (!state.from) {
+    toast('Select a start location to visualize Dijkstra');
+    $('#fromInput')?.focus();
+    return;
+  } else if (!state.to) {
+    toast('Select a destination to visualize Dijkstra');
+    $('#toInput')?.focus();
+    return;
+  }
+  if (state.result && state.result.trace && state.result.trace.length) {
+    visualizer.show(state.result, campus);
+    $('#visMapBtn')?.classList.add('on');
+    $('#mobileVisBtn')?.classList.add('on');
+  } else {
+    showStatus('Fetching C++ Dijkstra algorithm trace…');
+    try {
+      const r = await fetchRoute(state.from, state.to, state.profile, true);
+      showStatus('');
+      if (!r.found) { showStatus(r.message || 'No route found.', true); return; }
+      state.result = r;
+      visualizer.show(r, campus);
+      $('#visMapBtn')?.classList.add('on');
+      $('#mobileVisBtn')?.classList.add('on');
+    } catch (e) {
+      showStatus(`Failed to load visualizer trace: ${e.message}`, true);
+    }
+  }
+}
+
+function wireMobileUI() {
+  $('#mobilePreviewWalkBtn')?.addEventListener('click', async () => {
+    if (state.result) {
+      setMobileView('preview');
+      routeView.fit();
+      return;
+    }
+    if (state.from && state.to) {
+      await requestRoute();
+      if (state.result) {
+        setMobileView('preview');
+        routeView.fit();
+      }
+      return;
+    }
+    if (!state.from) {
+      toast('Select a start location');
+      $('#fromInput')?.focus();
+    } else if (!state.to) {
+      toast('Select a destination');
+      $('#toInput')?.focus();
+    }
+  });
+
+  $('#mobileBackBtn')?.addEventListener('click', () => {
+    setMobileView('plan');
+  });
+
+  $('#startWalkingBtn')?.addEventListener('click', () => {
+    if (routeView.flying) {
+      routeView.stopFlythrough();
+      const txt = $('#startWalkingBtn span'); if (txt) txt.textContent = 'Start walking';
+    } else {
+      const txt = $('#startWalkingBtn span'); if (txt) txt.textContent = 'Stop walking';
+      routeView.startFlythrough(() => {
+        const t1 = $('#startWalkingBtn span'); if (t1) t1.textContent = 'Start walking';
+        const t2 = $('#mobileRouteFlyBtn span'); if (t2) t2.textContent = 'Preview route';
+      });
+    }
+  });
+
+  $('#mobileRouteFlyBtn')?.addEventListener('click', () => {
+    if (routeView.flying) {
+      routeView.stopFlythrough();
+      const txt = $('#mobileRouteFlyBtn span'); if (txt) txt.textContent = 'Preview route';
+      const t1 = $('#startWalkingBtn span'); if (t1) t1.textContent = 'Start walking';
+    } else {
+      const txt = $('#mobileRouteFlyBtn span'); if (txt) txt.textContent = 'Stop preview';
+      routeView.startFlythrough(() => {
+        const t1 = $('#mobileRouteFlyBtn span'); if (t1) t1.textContent = 'Preview route';
+        const t2 = $('#startWalkingBtn span'); if (t2) t2.textContent = 'Start walking';
+      });
+    }
+  });
+
+  $('#mobileRouteShareBtn')?.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(location.href);
+      toast('Link copied to clipboard');
+    } catch {
+      toast('Copy the address bar to share this route');
+    }
+  });
+
+  $('#mobileVisBtn')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (visualizer && visualizer.group.visible) {
+      visualizer.hide();
+      $('#visMapBtn')?.classList.remove('on');
+      $('#mobileVisBtn')?.classList.remove('on');
+      if (document.documentElement.dataset.layout === 'mobile') setSheetState('half');
+    } else {
+      openVisualizer();
+    }
+  });
+
+  $('#mobileBookmarkBtn')?.addEventListener('click', () => {
+    toast('Route saved to bookmarks');
+  });
+
+  // Mobile Map Settings Popover
+  const settingsBtn = $('#mobileSettingsBtn');
+  const popover = $('#mobileSettingsPopover');
+  const closePopover = () => { if (popover) popover.hidden = true; };
+
+  settingsBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (popover) popover.hidden = !popover.hidden;
+  });
+
+  $('#mobileSettingsClose')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closePopover();
+  });
+
+  document.addEventListener('click', (e) => {
+    if (popover && !popover.hidden && !popover.contains(e.target) && e.target !== settingsBtn) {
+      closePopover();
+    }
+  });
+
+  const bindLayerToggle = (btnId, layerName) => {
+    const btn = $(`#${btnId}`);
+    if (!btn) return;
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const willBeOn = !btn.classList.contains('on');
+      btn.classList.toggle('on', willBeOn);
+      btn.textContent = willBeOn ? 'On' : 'Off';
+      btn.setAttribute('aria-checked', String(willBeOn));
+      const desktopBtn = $(`[data-layer="${layerName}"]`);
+      if (desktopBtn) desktopBtn.classList.toggle('on', willBeOn);
+      if (layerName === 'labels') labels.setVisible(willBeOn);
+      else if (layerName === 'trees') world.layers.trees.visible = willBeOn;
+      else if (layerName === 'graph') world.layers.graph.visible = willBeOn;
+    });
+  };
+  bindLayerToggle('mobLayerLabels', 'labels');
+  bindLayerToggle('mobLayerTrees', 'trees');
+  bindLayerToggle('mobLayerGraph', 'graph');
+
+  $('#mobToggleVis')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closePopover();
+    openVisualizer();
+  });
+
+  $('#mobView3d')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    stage.flyTo({ polar: 0.92 }, 0.8);
+    $('#mobView3d')?.classList.add('on');
+    $('#mobViewTop')?.classList.remove('on');
+    $('#view3d')?.classList.add('on');
+    $('#viewTop')?.classList.remove('on');
+  });
+
+  $('#mobViewTop')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    stage.topView();
+    $('#mobViewTop')?.classList.add('on');
+    $('#mobView3d')?.classList.remove('on');
+    $('#viewTop')?.classList.add('on');
+    $('#view3d')?.classList.remove('on');
+  });
+
+  $('#mobResetNorth')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    stage.resetView();
+  });
 }
 boot();
