@@ -1,0 +1,801 @@
+{
+  "title": "Chandigarh University Mohali — map reference manifest",
+  "source_image": "CU_map.png",
+  "source_image_dimensions_px": {
+    "width": 2048,
+    "height": 1448
+  },
+  "coordinate_system": {
+    "origin": "top-left of source image",
+    "x_axis": "increases to the right",
+    "y_axis": "increases downward",
+    "normalized_formula": {
+      "u": "x_px / 2048",
+      "v": "y_px / 1448"
+    },
+    "warning": "All anchors are approximate visual reference points, not surveyed GIS coordinates."
+  },
+  "important_instructions": [
+    "Use the original image as the authoritative 2D layout reference and preserve its aspect ratio.",
+    "Do not rearrange buildings into a generic grid or invent a symmetric campus.",
+    "Place every listed building using its anchor, especially C2, which must not be omitted.",
+    "Treat labels as building/landmark identities; do not assume each label is a routable entrance.",
+    "Create separate entrance nodes and pedestrian-path graph nodes after tracing walkable access.",
+    "Do not derive walking distances from pixel distances. Wait for user-provided measured distances.",
+    "Do not route through building footprints, parking lots, walls, or non-walkable road areas.",
+    "Keep unknown positions and connections marked approximate until verified."
+  ],
+  "places": [
+    {
+      "id": "gate_1",
+      "name": "Gate 1",
+      "category": "gate",
+      "anchor_px": {
+        "x": 1855,
+        "y": 185
+      },
+      "anchor_normalized": {
+        "u": 0.905762,
+        "v": 0.127762
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "gate_2",
+      "name": "Gate 2",
+      "category": "gate",
+      "anchor_px": {
+        "x": 1625,
+        "y": 258
+      },
+      "anchor_normalized": {
+        "u": 0.793457,
+        "v": 0.178177
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "gate_3",
+      "name": "Gate 3",
+      "category": "gate",
+      "anchor_px": {
+        "x": 920,
+        "y": 105
+      },
+      "anchor_normalized": {
+        "u": 0.449219,
+        "v": 0.072514
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "gate_8",
+      "name": "Gate 8",
+      "category": "gate",
+      "anchor_px": {
+        "x": 475,
+        "y": 585
+      },
+      "anchor_normalized": {
+        "u": 0.231934,
+        "v": 0.404006
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "vip_gate",
+      "name": "VIP Gate",
+      "category": "gate",
+      "anchor_px": {
+        "x": 1710,
+        "y": 190
+      },
+      "anchor_normalized": {
+        "u": 0.834961,
+        "v": 0.131215
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "academic_orientation_venue",
+      "name": "Academic Orientation Venue",
+      "category": "landmark",
+      "anchor_px": {
+        "x": 1015,
+        "y": 215
+      },
+      "anchor_normalized": {
+        "u": 0.495605,
+        "v": 0.148481
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "fountain_park",
+      "name": "Fountain Park",
+      "category": "landmark",
+      "anchor_px": {
+        "x": 1705,
+        "y": 375
+      },
+      "anchor_normalized": {
+        "u": 0.83252,
+        "v": 0.258978
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "information_centre__east",
+      "name": "Information Centre (East)",
+      "category": "landmark",
+      "anchor_px": {
+        "x": 1680,
+        "y": 575
+      },
+      "anchor_normalized": {
+        "u": 0.820312,
+        "v": 0.397099
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "information_centre__west",
+      "name": "Information Centre (West)",
+      "category": "landmark",
+      "anchor_px": {
+        "x": 885,
+        "y": 285
+      },
+      "anchor_normalized": {
+        "u": 0.432129,
+        "v": 0.196823
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "sports_complex",
+      "name": "Sports Complex",
+      "category": "sports",
+      "anchor_px": {
+        "x": 550,
+        "y": 645
+      },
+      "anchor_normalized": {
+        "u": 0.268555,
+        "v": 0.445442
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "sports_ground",
+      "name": "Sports Ground",
+      "category": "sports",
+      "anchor_px": {
+        "x": 300,
+        "y": 385
+      },
+      "anchor_normalized": {
+        "u": 0.146484,
+        "v": 0.265884
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "main_ground",
+      "name": "Main Ground",
+      "category": "sports",
+      "anchor_px": {
+        "x": 1535,
+        "y": 700
+      },
+      "anchor_normalized": {
+        "u": 0.749512,
+        "v": 0.483425
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "knowledge_resource_centre",
+      "name": "Knowledge Resource Centre",
+      "category": "landmark",
+      "anchor_px": {
+        "x": 650,
+        "y": 355
+      },
+      "anchor_normalized": {
+        "u": 0.317383,
+        "v": 0.245166
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "kalpana_chawla_space___research_centre",
+      "name": "Kalpana Chawla Space & Research Centre",
+      "category": "landmark",
+      "anchor_px": {
+        "x": 1230,
+        "y": 545
+      },
+      "anchor_normalized": {
+        "u": 0.600586,
+        "v": 0.376381
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "ucrd",
+      "name": "UCRD",
+      "category": "landmark",
+      "anchor_px": {
+        "x": 1450,
+        "y": 425
+      },
+      "anchor_normalized": {
+        "u": 0.708008,
+        "v": 0.293508
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "cultural_performance_venue",
+      "name": "Cultural Performance Venue",
+      "category": "landmark",
+      "anchor_px": {
+        "x": 1390,
+        "y": 590
+      },
+      "anchor_normalized": {
+        "u": 0.678711,
+        "v": 0.407459
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "handball___basketball_court",
+      "name": "Handball / Basketball Court",
+      "category": "sports",
+      "anchor_px": {
+        "x": 1530,
+        "y": 585
+      },
+      "anchor_normalized": {
+        "u": 0.74707,
+        "v": 0.404006
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "a1",
+      "name": "A1",
+      "category": "academic_block",
+      "anchor_px": {
+        "x": 1760,
+        "y": 250
+      },
+      "anchor_normalized": {
+        "u": 0.859375,
+        "v": 0.172652
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "a2",
+      "name": "A2",
+      "category": "academic_block",
+      "anchor_px": {
+        "x": 1880,
+        "y": 385
+      },
+      "anchor_normalized": {
+        "u": 0.917969,
+        "v": 0.265884
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "a3",
+      "name": "A3",
+      "category": "academic_block",
+      "anchor_px": {
+        "x": 1840,
+        "y": 435
+      },
+      "anchor_normalized": {
+        "u": 0.898438,
+        "v": 0.300414
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "b1",
+      "name": "B1",
+      "category": "academic_block",
+      "anchor_px": {
+        "x": 1540,
+        "y": 375
+      },
+      "anchor_normalized": {
+        "u": 0.751953,
+        "v": 0.258978
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "b2",
+      "name": "B2",
+      "category": "academic_block",
+      "anchor_px": {
+        "x": 1535,
+        "y": 465
+      },
+      "anchor_normalized": {
+        "u": 0.749512,
+        "v": 0.321133
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "b3",
+      "name": "B3",
+      "category": "academic_block",
+      "anchor_px": {
+        "x": 1635,
+        "y": 515
+      },
+      "anchor_normalized": {
+        "u": 0.79834,
+        "v": 0.355663
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "b4",
+      "name": "B4",
+      "category": "academic_block",
+      "anchor_px": {
+        "x": 1450,
+        "y": 515
+      },
+      "anchor_normalized": {
+        "u": 0.708008,
+        "v": 0.355663
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "b5",
+      "name": "B5",
+      "category": "academic_block",
+      "anchor_px": {
+        "x": 1110,
+        "y": 365
+      },
+      "anchor_normalized": {
+        "u": 0.541992,
+        "v": 0.252072
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "c1",
+      "name": "C1",
+      "category": "academic_block",
+      "anchor_px": {
+        "x": 1645,
+        "y": 660
+      },
+      "anchor_normalized": {
+        "u": 0.803223,
+        "v": 0.455801
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "c2",
+      "name": "C2",
+      "category": "academic_block",
+      "anchor_px": {
+        "x": 1645,
+        "y": 735
+      },
+      "anchor_normalized": {
+        "u": 0.803223,
+        "v": 0.507597
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "c3",
+      "name": "C3",
+      "category": "academic_block",
+      "anchor_px": {
+        "x": 1450,
+        "y": 665
+      },
+      "anchor_normalized": {
+        "u": 0.708008,
+        "v": 0.459254
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "d1",
+      "name": "D1",
+      "category": "academic_block",
+      "anchor_px": {
+        "x": 790,
+        "y": 320
+      },
+      "anchor_normalized": {
+        "u": 0.385742,
+        "v": 0.220994
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "d2",
+      "name": "D2",
+      "category": "academic_block",
+      "anchor_px": {
+        "x": 865,
+        "y": 345
+      },
+      "anchor_normalized": {
+        "u": 0.422363,
+        "v": 0.23826
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "d3",
+      "name": "D3",
+      "category": "academic_block",
+      "anchor_px": {
+        "x": 825,
+        "y": 390
+      },
+      "anchor_normalized": {
+        "u": 0.402832,
+        "v": 0.269337
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "d4",
+      "name": "D4",
+      "category": "academic_block",
+      "anchor_px": {
+        "x": 850,
+        "y": 425
+      },
+      "anchor_normalized": {
+        "u": 0.415039,
+        "v": 0.293508
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "d5",
+      "name": "D5",
+      "category": "academic_block",
+      "anchor_px": {
+        "x": 735,
+        "y": 400
+      },
+      "anchor_normalized": {
+        "u": 0.358887,
+        "v": 0.276243
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "d7",
+      "name": "D7",
+      "category": "academic_block",
+      "anchor_px": {
+        "x": 705,
+        "y": 305
+      },
+      "anchor_normalized": {
+        "u": 0.344238,
+        "v": 0.210635
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "d8",
+      "name": "D8",
+      "category": "academic_block",
+      "anchor_px": {
+        "x": 780,
+        "y": 205
+      },
+      "anchor_normalized": {
+        "u": 0.380859,
+        "v": 0.141575
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "dd1",
+      "name": "DD1",
+      "category": "academic_block",
+      "anchor_px": {
+        "x": 625,
+        "y": 135
+      },
+      "anchor_normalized": {
+        "u": 0.305176,
+        "v": 0.093232
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "dd2",
+      "name": "DD2",
+      "category": "academic_block",
+      "anchor_px": {
+        "x": 630,
+        "y": 195
+      },
+      "anchor_normalized": {
+        "u": 0.307617,
+        "v": 0.134669
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "dd3",
+      "name": "DD3",
+      "category": "academic_block",
+      "anchor_px": {
+        "x": 435,
+        "y": 280
+      },
+      "anchor_normalized": {
+        "u": 0.212402,
+        "v": 0.19337
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "dd4",
+      "name": "DD4",
+      "category": "academic_block",
+      "anchor_px": {
+        "x": 455,
+        "y": 385
+      },
+      "anchor_normalized": {
+        "u": 0.222168,
+        "v": 0.265884
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "gobind_hostel",
+      "name": "Gobind Hostel",
+      "category": "hostel",
+      "anchor_px": {
+        "x": 770,
+        "y": 105
+      },
+      "anchor_normalized": {
+        "u": 0.375977,
+        "v": 0.072514
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "tbi",
+      "name": "TBI",
+      "category": "landmark",
+      "anchor_px": {
+        "x": 785,
+        "y": 150
+      },
+      "anchor_normalized": {
+        "u": 0.383301,
+        "v": 0.103591
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "shivalik_hostel",
+      "name": "Shivalik Hostel",
+      "category": "hostel",
+      "anchor_px": {
+        "x": 640,
+        "y": 350
+      },
+      "anchor_normalized": {
+        "u": 0.3125,
+        "v": 0.241713
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "l_c_girls_hostel",
+      "name": "L-C Girls Hostel",
+      "category": "hostel",
+      "anchor_px": {
+        "x": 1275,
+        "y": 375
+      },
+      "anchor_normalized": {
+        "u": 0.622559,
+        "v": 0.258978
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "tagore_hostel",
+      "name": "Tagore Hostel",
+      "category": "hostel",
+      "anchor_px": {
+        "x": 1630,
+        "y": 820
+      },
+      "anchor_normalized": {
+        "u": 0.795898,
+        "v": 0.566298
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "zakir_hostel_complex",
+      "name": "Zakir Hostel Complex",
+      "category": "hostel",
+      "anchor_px": {
+        "x": 1075,
+        "y": 945
+      },
+      "anchor_normalized": {
+        "u": 0.524902,
+        "v": 0.652624
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "hostels_area__nct_1_6",
+      "name": "Hostels Area (NCT 1–6)",
+      "category": "hostel",
+      "anchor_px": {
+        "x": 1370,
+        "y": 950
+      },
+      "anchor_normalized": {
+        "u": 0.668945,
+        "v": 0.656077
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "adesh_campus",
+      "name": "Adesh Campus",
+      "category": "landmark",
+      "anchor_px": {
+        "x": 435,
+        "y": 245
+      },
+      "anchor_normalized": {
+        "u": 0.212402,
+        "v": 0.169199
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "student_parking__east",
+      "name": "Student Parking (East)",
+      "category": "parking",
+      "anchor_px": {
+        "x": 1965,
+        "y": 325
+      },
+      "anchor_normalized": {
+        "u": 0.959473,
+        "v": 0.224448
+      },
+      "position_confidence": "approximate"
+    },
+    {
+      "id": "student_parking__west",
+      "name": "Student Parking (West)",
+      "category": "parking",
+      "anchor_px": {
+        "x": 160,
+        "y": 340
+      },
+      "anchor_normalized": {
+        "u": 0.078125,
+        "v": 0.234807
+      },
+      "position_confidence": "approximate"
+    }
+  ],
+  "map_features_to_trace": [
+    {
+      "id": "north_boundary_road",
+      "type": "road_reference",
+      "note": "Road along the upper edge; trace from the source image, do not infer exact widths."
+    },
+    {
+      "id": "west_southwest_road",
+      "type": "road_reference",
+      "note": "Major diagonal road crossing the lower-left to east/southeast campus."
+    },
+    {
+      "id": "central_east_road",
+      "type": "road_reference",
+      "note": "Road corridor around the A/B blocks and Information Centre; trace from source."
+    },
+    {
+      "id": "sports_ground_access",
+      "type": "walkway_reference",
+      "note": "Access paths around Sports Complex and Sports Ground."
+    },
+    {
+      "id": "academic_core_paths",
+      "type": "walkway_reference",
+      "note": "Paths connecting D blocks, B blocks, C blocks, grounds and Information Centres."
+    }
+  ],
+  "routing_graph_schema": {
+    "nodes": [
+      {
+        "id": "node_id",
+        "name": "human-readable place/entrance/intersection",
+        "kind": "entrance|junction|landmark",
+        "map_anchor": {
+          "u": 0.0,
+          "v": 0.0
+        }
+      }
+    ],
+    "edges": [
+      {
+        "from": "node_id",
+        "to": "node_id",
+        "distance_m": null,
+        "walkable": true,
+        "accessible": true,
+        "verified": false
+      }
+    ],
+    "rule": "Dijkstra must use only verified walkable edges with supplied distance_m values. Missing distances must not be replaced with guessed values."
+  },
+  "building_index_from_map": {
+    "A": [
+      "A1",
+      "A2",
+      "A3"
+    ],
+    "B": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "C": [
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "D": [
+      "D1",
+      "D2",
+      "D3",
+      "D4",
+      "D5",
+      "D7",
+      "D8"
+    ],
+    "DD": [
+      "DD1",
+      "DD2",
+      "DD3",
+      "DD4"
+    ]
+  }
+}

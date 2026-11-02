@@ -1,0 +1,6175 @@
+{
+ "schema": "cu-campus-source/1",
+ "meta": {
+  "name": "Chandigarh University, Mohali (Gharuan) - Official Campus Map Layout",
+  "status": "ESTIMATED",
+  "description": "Reconstructed layout based on official Chandigarh University Campus Guide Map (\"Know Where You Are\"), cu_map_manifest.json and official publications.",
+  "generator": "tools/author-layout.mjs",
+  "sources": [
+   {
+    "id": "src-official-map",
+    "title": "Chandigarh University Official Campus Map (Know Where You Are)",
+    "url": "CU_map.png",
+    "used": "Official Academic Blocks (A1-A3, B1-B5, C1-C3 with C2 below C1 on right side of Main Ground, D1-D8, DD1-DD4), Hostels, Gates (1, 2, 3, 8/4, VIP), Main Ground, Sports Complex. B3=DSW, B4=Kalpana Chawla, D6=Central Library per user-verified corrections."
+   },
+   {
+    "id": "src-iviewd",
+    "title": "CU virtual campus tour (iviewd.com/cu2) - page metadata",
+    "url": "https://iviewd.com/cu2/",
+    "used": "Campus reference coordinate 30.7668 N, 76.5781 E."
+   },
+   {
+    "id": "src-cu-blog",
+    "title": "CU blog: Top places at Chandigarh University",
+    "url": "https://blog.cuchd.in/2026/06/top-places-chandigarh-university.html",
+    "used": "Kalpana Chawla Block, Food Republic, D6 Library, Knowledge Resource Centre, Central Library, Fountain Area, Sports Complex."
+   },
+   {
+    "id": "src-cu-hostel",
+    "title": "CU hostel facility page",
+    "url": "https://www.cuchd.in/student-services/hostel-facility.php",
+    "used": "Existence of separate Boys and Girls hostels."
+   },
+   {
+    "id": "src-collegesearch",
+    "title": "CollegeSearch - Chandigarh University location",
+    "url": "https://www.collegesearch.in/articles/chandigarh-university-location-uni",
+    "used": "Gate 1, Gate 2, Gate 4 and Main Gate."
+   },
+   {
+    "id": "src-getmyuni",
+    "title": "GetMyUni - Chandigarh University facilities",
+    "url": "https://www.getmyuni.com/college/chandigarh-university-mohali-facilities",
+    "used": "Facility inventory: auditorium, open theater, medical centre, banks, sports venues."
+   }
+  ]
+ },
+ "origin": {
+  "lat": 30.7668,
+  "lon": 76.5781
+ },
+ "boundary": [
+  [
+   -520,
+   -350
+  ],
+  [
+   520,
+   -350
+  ],
+  [
+   520,
+   250
+  ],
+  [
+   -520,
+   250
+  ]
+ ],
+ "places": [
+  {
+   "aliases": [
+    "main gate",
+    "gate 1",
+    "gate one",
+    "roundabout"
+   ],
+   "levels": 1,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map",
+    "src-collegesearch"
+   ],
+   "render": "gate",
+   "id": "gate-1",
+   "name": "Gate 1 (Main Gate)",
+   "kind": "gate",
+   "footprint": [
+    [
+     433,
+     -284.5
+    ],
+    [
+     463,
+     -284.5
+    ],
+    [
+     463,
+     -279.5
+    ],
+    [
+     433,
+     -279.5
+    ]
+   ],
+   "height": 9,
+   "entrance": {
+    "x": 448,
+    "z": -282
+   },
+   "note": "Official campus entry gate."
+  },
+  {
+   "aliases": [
+    "gate two",
+    "gate 2"
+   ],
+   "levels": 1,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map",
+    "src-collegesearch"
+   ],
+   "render": "gate",
+   "id": "gate-2",
+   "name": "Gate 2",
+   "kind": "gate",
+   "footprint": [
+    [
+     260,
+     -286.5
+    ],
+    [
+     290,
+     -286.5
+    ],
+    [
+     290,
+     -281.5
+    ],
+    [
+     260,
+     -281.5
+    ]
+   ],
+   "height": 9,
+   "entrance": {
+    "x": 275,
+    "z": -276
+   },
+   "note": "Official campus entry gate."
+  },
+  {
+   "aliases": [
+    "gate three",
+    "gate 3"
+   ],
+   "levels": 1,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map",
+    "src-collegesearch"
+   ],
+   "render": "gate",
+   "id": "gate-3",
+   "name": "Gate 3",
+   "kind": "gate",
+   "footprint": [
+    [
+     -66,
+     -286.5
+    ],
+    [
+     -36,
+     -286.5
+    ],
+    [
+     -36,
+     -281.5
+    ],
+    [
+     -66,
+     -281.5
+    ]
+   ],
+   "height": 9,
+   "entrance": {
+    "x": -51,
+    "z": -284
+   },
+   "note": "Official campus entry gate."
+  },
+  {
+   "aliases": [
+    "vip gate",
+    "vip"
+   ],
+   "levels": 1,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map",
+    "src-collegesearch"
+   ],
+   "render": "gate",
+   "id": "vip-gate",
+   "name": "VIP Gate",
+   "kind": "gate",
+   "footprint": [
+    [
+     420,
+     -282.5
+    ],
+    [
+     450,
+     -282.5
+    ],
+    [
+     450,
+     -277.5
+    ],
+    [
+     420,
+     -277.5
+    ]
+   ],
+   "height": 9,
+   "entrance": {
+    "x": 435,
+    "z": -280
+   },
+   "note": "Official campus entry gate."
+  },
+  {
+   "aliases": [
+    "gate seven",
+    "gate 7"
+   ],
+   "levels": 1,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map",
+    "src-collegesearch"
+   ],
+   "render": "gate",
+   "id": "gate-7",
+   "name": "Gate 7",
+   "kind": "gate",
+   "footprint": [
+    [
+     -30,
+     -92.5
+    ],
+    [
+     0,
+     -92.5
+    ],
+    [
+     0,
+     -87.5
+    ],
+    [
+     -30,
+     -87.5
+    ]
+   ],
+   "height": 9,
+   "entrance": {
+    "x": -15,
+    "z": -90
+   },
+   "note": "Official campus entry gate."
+  },
+  {
+   "aliases": [
+    "gate four",
+    "gate 4",
+    "boys hostel gate",
+    "boys hostel gate 4"
+   ],
+   "levels": 1,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map",
+    "src-collegesearch"
+   ],
+   "render": "gate",
+   "id": "gate-4",
+   "name": "Gate 4",
+   "kind": "gate",
+   "footprint": [
+    [
+     197,
+     62.5
+    ],
+    [
+     227,
+     62.5
+    ],
+    [
+     227,
+     67.5
+    ],
+    [
+     197,
+     67.5
+    ]
+   ],
+   "height": 9,
+   "entrance": {
+    "x": 212,
+    "z": 65
+   },
+   "note": "Official campus entry gate."
+  },
+  {
+   "aliases": [
+    "gate eight",
+    "gate 8",
+    "sports gate"
+   ],
+   "levels": 1,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map",
+    "src-collegesearch"
+   ],
+   "render": "gate",
+   "id": "gate-8",
+   "name": "Gate 8 (Sports Complex Gate)",
+   "kind": "gate",
+   "footprint": [
+    [
+     -283,
+     -70.5
+    ],
+    [
+     -253,
+     -70.5
+    ],
+    [
+     -253,
+     -65.5
+    ],
+    [
+     -283,
+     -65.5
+    ]
+   ],
+   "height": 9,
+   "entrance": {
+    "x": -268,
+    "z": -68
+   },
+   "note": "Official campus entry gate."
+  },
+  {
+   "aliases": [
+    "fountain",
+    "fountain area",
+    "central plaza",
+    "musical fountain",
+    "fountain park",
+    "musical programme"
+   ],
+   "levels": 1,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map",
+    "src-cu-blog"
+   ],
+   "render": "fountain",
+   "id": "fountain-plaza",
+   "name": "Fountain Plaza (Musical Programme)",
+   "kind": "landmark",
+   "footprint": [
+    [
+     336,
+     -145
+    ],
+    [
+     335.315,
+     -140.674
+    ],
+    [
+     333.326,
+     -136.771
+    ],
+    [
+     330.229,
+     -133.674
+    ],
+    [
+     326.326,
+     -131.685
+    ],
+    [
+     322,
+     -131
+    ],
+    [
+     317.674,
+     -131.685
+    ],
+    [
+     313.771,
+     -133.674
+    ],
+    [
+     310.674,
+     -136.771
+    ],
+    [
+     308.685,
+     -140.674
+    ],
+    [
+     308,
+     -145
+    ],
+    [
+     308.685,
+     -149.326
+    ],
+    [
+     310.674,
+     -153.229
+    ],
+    [
+     313.771,
+     -156.326
+    ],
+    [
+     317.674,
+     -158.315
+    ],
+    [
+     322,
+     -159
+    ],
+    [
+     326.326,
+     -158.315
+    ],
+    [
+     330.229,
+     -156.326
+    ],
+    [
+     333.326,
+     -153.229
+    ],
+    [
+     335.315,
+     -149.326
+    ]
+   ],
+   "height": 3,
+   "entrance": {
+    "x": 322,
+    "z": -145
+   },
+   "note": "Fountain Musical Programme and central gathering plaza on official map."
+  },
+  {
+   "aliases": [
+    "a1",
+    "biotechnology",
+    "biosciences",
+    "block a1"
+   ],
+   "levels": 5,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "a1-biotech",
+   "name": "A1 University Institute of Biotechnology",
+   "footprint": [
+    [
+     340,
+     -266
+    ],
+    [
+     415,
+     -268
+    ],
+    [
+     420,
+     -250
+    ],
+    [
+     340,
+     -248
+    ]
+   ],
+   "kind": "academic",
+   "height": 18,
+   "entranceSide": "S",
+   "note": "Dept of Biosciences, Dept of Biotechnology (A1 on official map)."
+  },
+  {
+   "aliases": [
+    "a2",
+    "architecture",
+    "film & visual arts",
+    "vfx",
+    "media studies",
+    "block a2"
+   ],
+   "levels": 5,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "a2-architecture",
+   "name": "A2 University Institute of Architecture",
+   "footprint": [
+    [
+     460.5,
+     -195
+    ],
+    [
+     495.5,
+     -195
+    ],
+    [
+     495.5,
+     -165
+    ],
+    [
+     460.5,
+     -165
+    ]
+   ],
+   "kind": "academic",
+   "entranceSide": "W",
+   "note": "Dept of Architecture, Film & Visual Arts, Media Studies (A2 on official map).",
+   "height": 18
+  },
+  {
+   "aliases": [
+    "a3",
+    "liberal arts",
+    "humanities",
+    "design",
+    "teacher training",
+    "education",
+    "block a3"
+   ],
+   "levels": 5,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "a3-liberal-arts",
+   "name": "A3 Institute of Liberal Arts & Humanities",
+   "footprint": [
+    [
+     448,
+     -145
+    ],
+    [
+     492,
+     -145
+    ],
+    [
+     492,
+     -99
+    ],
+    [
+     448,
+     -99
+    ]
+   ],
+   "kind": "academic",
+   "entranceSide": "W",
+   "note": "Liberal Arts, Humanities, Design, Education (A3 on official map).",
+   "height": 18
+  },
+  {
+   "aliases": [
+    "b1",
+    "nakoda",
+    "cse nakoda",
+    "mechanical engineering",
+    "block b1"
+   ],
+   "levels": 6,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "b1-engineering",
+   "name": "B1 Institute of Engineering (Nakoda CSE)",
+   "footprint": [
+    [
+     152,
+     -180
+    ],
+    [
+     228,
+     -180
+    ],
+    [
+     228,
+     -165
+    ],
+    [
+     185,
+     -165
+    ],
+    [
+     185,
+     -135
+    ],
+    [
+     152,
+     -135
+    ]
+   ],
+   "kind": "academic",
+   "height": 21.6,
+   "entranceSide": "S",
+   "note": "Computer Science & Engineering (Nakoda), ME (B1 on official map)."
+  },
+  {
+   "aliases": [
+    "b2",
+    "hospitality",
+    "tourism",
+    "airlines",
+    "block b2"
+   ],
+   "levels": 6,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "b2-hospitality",
+   "name": "B2 Institute of Tourism & Hospitality Management",
+   "footprint": [
+    [
+     212,
+     -114
+    ],
+    [
+     260,
+     -114
+    ],
+    [
+     260,
+     -100
+    ],
+    [
+     212,
+     -100
+    ]
+   ],
+   "kind": "academic",
+   "entranceSide": "N",
+   "note": "Dept of Hospitality, Tourism, Airlines (B2 on official map).",
+   "height": 21.6
+  },
+  {
+   "aliases": [
+    "b3",
+    "dsw",
+    "b3-dsw",
+    "student welfare",
+    "department of student welfare",
+    "vikramshila",
+    "cse vikramshila",
+    "block b3",
+    "b3 - dsw"
+   ],
+   "levels": 5,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "b3-engineering",
+   "name": "B3 – DSW Building",
+   "footprint": [
+    [
+     212,
+     -97
+    ],
+    [
+     260,
+     -97
+    ],
+    [
+     260,
+     -83
+    ],
+    [
+     212,
+     -83
+    ]
+   ],
+   "kind": "academic",
+   "entranceSide": "S",
+   "note": "B3 – DSW Building. Original DSW physical building at (236, -90), parallel wing south of B2, officially serving both B3 and DSW identities.",
+   "height": 18
+  },
+  {
+   "aliases": [
+    "b4",
+    "aerospace",
+    "automobile",
+    "biotech engineering",
+    "chemical",
+    "civil",
+    "ece",
+    "mechanical",
+    "mechatronics",
+    "block b4",
+    "kalpana chawla",
+    "kc block",
+    "kccrsst",
+    "space science",
+    "kalpana-chawla-block"
+   ],
+   "levels": 6,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "b4-engineering",
+   "name": "B4 – Kalpana Chawla Space & Research Centre",
+   "footprint": [
+    [
+     170,
+     -113
+    ],
+    [
+     194,
+     -113
+    ],
+    [
+     194,
+     -89
+    ],
+    [
+     170,
+     -89
+    ]
+   ],
+   "kind": "academic",
+   "entrance": {
+    "x": 182,
+    "z": -89
+   },
+   "entranceSide": "S",
+   "note": "B4 = Kalpana Chawla Space & Research Centre. Aerospace, Automobile, Civil, ECE, Mechanical, Mechatronics. Single enlarged building (B4 on official map).",
+   "height": 21.6
+  },
+  {
+   "aliases": [
+    "b5",
+    "b5-law",
+    "law-block",
+    "moot court",
+    "law",
+    "legal studies",
+    "daca",
+    "art and cultural affairs",
+    "block b5"
+   ],
+   "levels": 5,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "law-block",
+   "name": "B5 University Institute of Legal Studies (Law & DACA)",
+   "kind": "academic",
+   "footprint": [
+    [
+     27,
+     -114
+    ],
+    [
+     47,
+     -114
+    ],
+    [
+     47,
+     -122
+    ],
+    [
+     73,
+     -122
+    ],
+    [
+     73,
+     -98
+    ],
+    [
+     27,
+     -98
+    ]
+   ],
+   "height": 18,
+   "entrance": {
+    "x": 50,
+    "z": -98
+   },
+   "entranceSide": "S",
+   "note": "Dept of Legal Studies, Dept of Art and Cultural Affairs (B5 on official map)."
+  },
+  {
+   "aliases": [
+    "lc hostel",
+    "lc girls hostel",
+    "kalpana chawla hostel",
+    "l-c girls hostel"
+   ],
+   "levels": 6,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "lc-girls-hostel",
+   "name": "LC Girls Hostel",
+   "footprint": [
+    [
+     87,
+     -131
+    ],
+    [
+     123,
+     -131
+    ],
+    [
+     123,
+     -101
+    ],
+    [
+     87,
+     -101
+    ]
+   ],
+   "kind": "hostel",
+   "entrance": {
+    "x": 105,
+    "z": -101
+   },
+   "entranceSide": "S",
+   "note": "LC Girls Hostel on official map.",
+   "height": 21.6
+  },
+  {
+   "aliases": [
+    "sukhna girls hostel",
+    "sukhna hostel",
+    "girls hostel 1"
+   ],
+   "levels": 6,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "girls-hostel-1",
+   "name": "Sukhna Girls Hostel",
+   "footprint": [
+    [
+     337,
+     -212
+    ],
+    [
+     373,
+     -212
+    ],
+    [
+     373,
+     -188
+    ],
+    [
+     337,
+     -188
+    ]
+   ],
+   "kind": "hostel",
+   "entranceSide": "S",
+   "note": "Sukhna Girls Hostel south of A1 on official map.",
+   "height": 21.6
+  },
+  {
+   "aliases": [
+    "cricket",
+    "cricket field",
+    "main ground",
+    "ground"
+   ],
+   "levels": 0,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "cricket",
+   "id": "cricket-ground",
+   "name": "Main Ground (Cricket & Athletic Field)",
+   "kind": "sports",
+   "footprint": [
+    [
+     222,
+     -38
+    ],
+    [
+     272,
+     -38
+    ],
+    [
+     272,
+     32
+    ],
+    [
+     222,
+     32
+    ]
+   ],
+   "height": 0.1,
+   "entranceCount": 2,
+   "note": "Main sports ground on official map."
+  },
+  {
+   "aliases": [
+    "basketball",
+    "basketball court",
+    "handball court"
+   ],
+   "levels": 0,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "court",
+   "id": "basketball-court",
+   "name": "Basketball Court (B3 Sports Area)",
+   "kind": "sports",
+   "courtType": "basketball",
+   "footprint": [
+    [
+     230,
+     -66
+    ],
+    [
+     260,
+     -66
+    ],
+    [
+     260,
+     -50
+    ],
+    [
+     230,
+     -50
+    ]
+   ],
+   "height": 0.1,
+   "entranceSide": "W",
+   "note": "Handball & Basketball Court on official map."
+  },
+  {
+   "aliases": [
+    "c1",
+    "foundation 1",
+    "foundation 2",
+    "cse ait",
+    "block c1"
+   ],
+   "levels": 6,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "c1-engineering",
+   "name": "C1 Institute of Engineering (Foundation CSE)",
+   "footprint": [
+    [
+     296,
+     -44
+    ],
+    [
+     320,
+     -44
+    ],
+    [
+     320,
+     -16
+    ],
+    [
+     296,
+     -16
+    ]
+   ],
+   "kind": "academic",
+   "entranceSide": "W",
+   "note": "Engineering Foundation 1, 2, 4, 5 (C1 on official map).",
+   "height": 21.6
+  },
+  {
+   "aliases": [
+    "fr",
+    "food court",
+    "canteen",
+    "mess",
+    "food republic"
+   ],
+   "levels": 2,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "foodcourt",
+   "id": "food-republic",
+   "name": "Food Republic",
+   "footprint": [
+    [
+     296,
+     -10
+    ],
+    [
+     320,
+     -10
+    ],
+    [
+     320,
+     8
+    ],
+    [
+     296,
+     8
+    ]
+   ],
+   "kind": "food",
+   "height": 7,
+   "entranceSide": "W",
+   "note": "Food Republic food court on official map, located between C1 and C2."
+  },
+  {
+   "aliases": [
+    "c2",
+    "takshila",
+    "cse takshila",
+    "block c2"
+   ],
+   "levels": 6,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "c2-engineering",
+   "name": "C2 Institute of Engineering (Takshila CSE)",
+   "footprint": [
+    [
+     296,
+     14
+    ],
+    [
+     320,
+     14
+    ],
+    [
+     320,
+     42
+    ],
+    [
+     296,
+     42
+    ]
+   ],
+   "kind": "academic",
+   "entranceSide": "W",
+   "note": "Computer Science & Engineering (Takshila) (C2 on official map, below Food Republic on right of Main Ground).",
+   "height": 21.6
+  },
+  {
+   "aliases": [
+    "c3",
+    "foundation 3",
+    "non cse",
+    "block c3"
+   ],
+   "levels": 5,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "c3-engineering",
+   "name": "C3 Institute of Engineering (Non-CSE)",
+   "footprint": [
+    [
+     182,
+     -36
+    ],
+    [
+     202,
+     -36
+    ],
+    [
+     202,
+     2
+    ],
+    [
+     182,
+     2
+    ]
+   ],
+   "kind": "academic",
+   "entranceSide": "E",
+   "note": "Engineering Foundation 3 (Non-CSE) (C3 on official map).",
+   "height": 18
+  },
+  {
+   "aliases": [
+    "staff quarters",
+    "staff quarter",
+    "staff residential",
+    "staff housing"
+   ],
+   "levels": 4,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "staff-quarters",
+   "name": "Staff Quarters",
+   "footprint": [
+    [
+     187,
+     11
+    ],
+    [
+     205,
+     11
+    ],
+    [
+     205,
+     29
+    ],
+    [
+     187,
+     29
+    ]
+   ],
+   "kind": "residential",
+   "entranceSide": "E",
+   "note": "Staff Quarters on official map, south of C3 towards the Boys Hostel and Gate 4 side.",
+   "height": 14.4
+  },
+  {
+   "aliases": [
+    "tagore hostel",
+    "tagore"
+   ],
+   "levels": 6,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "tagore-hostel",
+   "name": "Tagore Hostel",
+   "footprint": [
+    [
+     295,
+     56
+    ],
+    [
+     335,
+     56
+    ],
+    [
+     335,
+     80
+    ],
+    [
+     295,
+     80
+    ]
+   ],
+   "kind": "hostel",
+   "entranceSide": "W",
+   "note": "Tagore Hostel south of Main Ground on official map.",
+   "height": 21.6
+  },
+  {
+   "aliases": [
+    "information centre east",
+    "info centre east",
+    "help desk east"
+   ],
+   "levels": 1,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "info-centre-east",
+   "name": "Information Centre (East)",
+   "footprint": [
+    [
+     340,
+     -68
+    ],
+    [
+     360,
+     -68
+    ],
+    [
+     360,
+     -52
+    ],
+    [
+     340,
+     -52
+    ]
+   ],
+   "kind": "landmark",
+   "entranceSide": "W",
+   "note": "Information Centre East on official map.",
+   "height": 3.6
+  },
+  {
+   "aliases": [
+    "venue east",
+    "academic venue"
+   ],
+   "levels": 3,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "orientation-venue",
+   "name": "Campus Venue Block",
+   "kind": "academic",
+   "footprint": [
+    [
+     -27,
+     -265
+    ],
+    [
+     27,
+     -265
+    ],
+    [
+     27,
+     -225
+    ],
+    [
+     -27,
+     -225
+    ]
+   ],
+   "height": 11,
+   "entrance": {
+    "x": -27,
+    "z": -245
+   },
+   "entranceSide": "W",
+   "note": "Large academic facility east of Gate 3."
+  },
+  {
+   "aliases": [
+    "d8",
+    "pharma",
+    "nursing",
+    "finance",
+    "global finance",
+    "block d8"
+   ],
+   "levels": 5,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "d8-pharma",
+   "name": "D8 Institute of Pharma Sciences & Nursing",
+   "footprint": [
+    [
+     -125,
+     -258
+    ],
+    [
+     -65,
+     -258
+    ],
+    [
+     -65,
+     -242
+    ],
+    [
+     -125,
+     -242
+    ]
+   ],
+   "kind": "academic",
+   "entrance": {
+    "x": -95,
+    "z": -242
+   },
+   "entranceSide": "S",
+   "note": "Pharma Sciences, Global Finance, Nursing (D8 on official map).",
+   "height": 18
+  },
+  {
+   "aliases": [
+    "tb1",
+    "tbi",
+    "innovation lab",
+    "incubation",
+    "startup"
+   ],
+   "levels": 3,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "innovation-lab",
+   "name": "TB1 (Technology Business Incubator)",
+   "footprint": [
+    [
+     -108,
+     -271
+    ],
+    [
+     -82,
+     -271
+    ],
+    [
+     -82,
+     -261
+    ],
+    [
+     -108,
+     -261
+    ]
+   ],
+   "kind": "academic",
+   "entrance": {
+    "x": -108,
+    "z": -266
+   },
+   "entranceSide": "W",
+   "note": "TB1 near Gobind Hostel on official map.",
+   "height": 10.8
+  },
+  {
+   "aliases": [
+    "gobind hostel",
+    "gobind",
+    "girls hostel 3"
+   ],
+   "levels": 6,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "girls-hostel-3",
+   "name": "Gobind Hostel",
+   "footprint": [
+    [
+     -113,
+     -288
+    ],
+    [
+     -77,
+     -288
+    ],
+    [
+     -77,
+     -274
+    ],
+    [
+     -113,
+     -274
+    ]
+   ],
+   "kind": "hostel",
+   "entrance": {
+    "x": -113,
+    "z": -281
+   },
+   "entranceSide": "W",
+   "note": "Gobind Hostel on official map.",
+   "height": 21.6
+  },
+  {
+   "aliases": [
+    "facility north"
+   ],
+   "levels": 2,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "north-square-facility",
+   "name": "North Facility Block",
+   "kind": "service",
+   "footprint": [
+    [
+     -164,
+     -310
+    ],
+    [
+     -146,
+     -310
+    ],
+    [
+     -146,
+     -292
+    ],
+    [
+     -164,
+     -292
+    ]
+   ],
+   "height": 7,
+   "entrance": {
+    "x": -146,
+    "z": -300
+   },
+   "note": "Facility block northwest of Gobind Hostel."
+  },
+  {
+   "aliases": [
+    "d7",
+    "allied health",
+    "nutrition",
+    "optometry",
+    "forensic",
+    "chemistry",
+    "pharma research",
+    "block d7"
+   ],
+   "levels": 5,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "d7-allied-health",
+   "name": "D7 Institute of Allied Health Sciences",
+   "footprint": [
+    [
+     -157,
+     -212
+    ],
+    [
+     -139,
+     -212
+    ],
+    [
+     -139,
+     -192
+    ],
+    [
+     -157,
+     -192
+    ]
+   ],
+   "kind": "academic",
+   "entrance": {
+    "x": -148,
+    "z": -192
+   },
+   "entranceSide": "S",
+   "note": "Allied Health Sciences, Nutrition, Medical Lab, Forensic, Chemistry (D7 on official map).",
+   "height": 18
+  },
+  {
+   "aliases": [
+    "lib",
+    "library",
+    "krc",
+    "d6",
+    "knowledge resource centre",
+    "library d6",
+    "central library",
+    "central-library",
+    "reading hall"
+   ],
+   "levels": 5,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "d6-library",
+   "name": "D6 – Central Library (Knowledge Resource Centre)",
+   "footprint": [
+    [
+     -162,
+     -187
+    ],
+    [
+     -142,
+     -187
+    ],
+    [
+     -142,
+     -169
+    ],
+    [
+     -162,
+     -169
+    ]
+   ],
+   "kind": "library",
+   "entrance": {
+    "x": -142,
+    "z": -178
+   },
+   "entranceSide": "E",
+   "note": "D6 = Central Library / Knowledge Resource Centre. Single building (D6 on official map marked with star).",
+   "height": 18
+  },
+  {
+   "aliases": [
+    "shivalik hostel",
+    "shivalik",
+    "girls hostel 2"
+   ],
+   "levels": 6,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map",
+    "src-cu-hostel"
+   ],
+   "render": "box",
+   "id": "girls-hostel-2",
+   "name": "Shivalik Hostel",
+   "kind": "hostel",
+   "footprint": [
+    [
+     -199,
+     -181
+    ],
+    [
+     -171,
+     -181
+    ],
+    [
+     -171,
+     -155
+    ],
+    [
+     -186,
+     -155
+    ],
+    [
+     -186,
+     -166
+    ],
+    [
+     -199,
+     -166
+    ]
+   ],
+   "height": 21,
+   "entrance": {
+    "x": -171,
+    "z": -168
+   },
+   "entranceSide": "E",
+   "note": "Shivalik Hostel on official map."
+  },
+  {
+   "aliases": [
+    "tower",
+    "utility tower",
+    "chimney"
+   ],
+   "levels": 1,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "west-utility-tower",
+   "name": "West Utility Tower",
+   "kind": "service",
+   "footprint": [
+    [
+     -234,
+     -178
+    ],
+    [
+     -230,
+     -178
+    ],
+    [
+     -230,
+     -142
+    ],
+    [
+     -234,
+     -142
+    ]
+   ],
+   "height": 15,
+   "entrance": {
+    "x": -230,
+    "z": -160
+   },
+   "note": "Utility structure west of Shivalik Hostel."
+  },
+  {
+   "aliases": [
+    "d1",
+    "aim mba",
+    "management",
+    "block d1",
+    "d1 north"
+   ],
+   "levels": 5,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "d1-apex-management",
+   "name": "D1 Apex Institute of Management (MBA AIM)",
+   "footprint": [
+    [
+     -92,
+     -210
+    ],
+    [
+     -52,
+     -210
+    ],
+    [
+     -52,
+     -198
+    ],
+    [
+     -92,
+     -198
+    ]
+   ],
+   "kind": "academic",
+   "entrance": {
+    "x": -72,
+    "z": -198
+   },
+   "entranceSide": "S",
+   "note": "Apex Institute of Management MBA AIM (D1 North on official map).",
+   "height": 18
+  },
+  {
+   "aliases": [
+    "d1 west",
+    "block d1 west"
+   ],
+   "levels": 5,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "d1-west",
+   "name": "D1 West Wing",
+   "footprint": [
+    [
+     -119,
+     -202
+    ],
+    [
+     -105,
+     -202
+    ],
+    [
+     -105,
+     -178
+    ],
+    [
+     -119,
+     -178
+    ]
+   ],
+   "kind": "academic",
+   "entrance": {
+    "x": -105,
+    "z": -190
+   },
+   "entranceSide": "E",
+   "note": "Apex Institute of Management (D1 West on official map).",
+   "height": 18
+  },
+  {
+   "aliases": [
+    "d1 link",
+    "d1 corridor"
+   ],
+   "levels": 2,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "d1-link",
+   "name": "D1 Corridor Link",
+   "footprint": [
+    [
+     -105,
+     -204
+    ],
+    [
+     -92,
+     -204
+    ],
+    [
+     -92,
+     -198
+    ],
+    [
+     -105,
+     -198
+    ]
+   ],
+   "kind": "academic",
+   "height": 5,
+   "note": "Connector corridor linking D1 North and D1 West."
+  },
+  {
+   "aliases": [
+    "d2",
+    "apex cse",
+    "ai ml",
+    "block d2"
+   ],
+   "levels": 5,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "d2-engineering",
+   "name": "D2 Institute of Engineering (APEX AI & ML)",
+   "footprint": [
+    [
+     -45,
+     -200
+    ],
+    [
+     -27,
+     -200
+    ],
+    [
+     -27,
+     -184
+    ],
+    [
+     -45,
+     -184
+    ]
+   ],
+   "kind": "academic",
+   "entrance": {
+    "x": -36,
+    "z": -200
+   },
+   "entranceSide": "N",
+   "note": "APEX Computer Science & Engineering (AI & ML) (D2 on official map).",
+   "height": 18
+  },
+  {
+   "aliases": [
+    "d3",
+    "apex core",
+    "block d3"
+   ],
+   "levels": 5,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "d3-engineering",
+   "name": "D3 Institute of Engineering (APEX Core CSE)",
+   "footprint": [
+    [
+     -55,
+     -178
+    ],
+    [
+     -33,
+     -178
+    ],
+    [
+     -33,
+     -162
+    ],
+    [
+     -55,
+     -162
+    ]
+   ],
+   "kind": "academic",
+   "entrance": {
+    "x": -55,
+    "z": -170
+   },
+   "entranceSide": "W",
+   "note": "APEX Computer Science & Engineering Core (D3 on official map).",
+   "height": 18
+  },
+  {
+   "aliases": [
+    "d4",
+    "bba apex",
+    "mba 2nd year",
+    "block d4"
+   ],
+   "levels": 5,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "d4-apex-management",
+   "name": "D4 Apex Institute of Management (BBA APEX)",
+   "footprint": [
+    [
+     -60,
+     -155
+    ],
+    [
+     -36,
+     -155
+    ],
+    [
+     -36,
+     -137
+    ],
+    [
+     -60,
+     -137
+    ]
+   ],
+   "kind": "academic",
+   "entrance": {
+    "x": -60,
+    "z": -146
+   },
+   "entranceSide": "W",
+   "note": "Apex Institute of Management BBA APEX / MBA (D4 on official map).",
+   "height": 18
+  },
+  {
+   "aliases": [
+    "d5",
+    "business school",
+    "usb economics",
+    "mba 1st year",
+    "block d5"
+   ],
+   "levels": 5,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "d5-business",
+   "name": "D5 University School of Business (Economics)",
+   "footprint": [
+    [
+     -119,
+     -173
+    ],
+    [
+     -105,
+     -173
+    ],
+    [
+     -105,
+     -151
+    ],
+    [
+     -119,
+     -151
+    ]
+   ],
+   "kind": "academic",
+   "entrance": {
+    "x": -105,
+    "z": -162
+   },
+   "entranceSide": "E",
+   "note": "University School of Business MBA / Economics (D5 on official map).",
+   "height": 18
+  },
+  {
+   "aliases": [
+    "dd1",
+    "mathematics",
+    "physical education",
+    "block dd1"
+   ],
+   "levels": 4,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "dd1-sciences",
+   "name": "DD1 Institute of Sciences (Mathematics)",
+   "kind": "academic",
+   "footprint": [
+    [
+     -205,
+     -299
+    ],
+    [
+     -165,
+     -299
+    ],
+    [
+     -165,
+     -281
+    ],
+    [
+     -182,
+     -281
+    ],
+    [
+     -182,
+     -288
+    ],
+    [
+     -194,
+     -288
+    ],
+    [
+     -194,
+     -281
+    ],
+    [
+     -205,
+     -281
+    ]
+   ],
+   "height": 14,
+   "entrance": {
+    "x": -185,
+    "z": -281
+   },
+   "entranceSide": "S",
+   "note": "Dept of Mathematics, Institute of Physical Education (DD1 on official map)."
+  },
+  {
+   "aliases": [
+    "dd2",
+    "physics",
+    "block dd2"
+   ],
+   "levels": 4,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "dd2-sciences",
+   "name": "DD2 Institute of Sciences (Physics)",
+   "footprint": [
+    [
+     -198,
+     -270
+    ],
+    [
+     -162,
+     -270
+    ],
+    [
+     -162,
+     -254
+    ],
+    [
+     -198,
+     -254
+    ]
+   ],
+   "kind": "academic",
+   "entrance": {
+    "x": -180,
+    "z": -270
+   },
+   "entranceSide": "N",
+   "note": "Dept of Physics (DD2 on official map).",
+   "height": 14.4
+  },
+  {
+   "aliases": [
+    "dd3",
+    "adesh campus",
+    "bba",
+    "block dd3"
+   ],
+   "levels": 4,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "dd3-business",
+   "name": "DD3 School of Business (Adesh Campus BBA)",
+   "footprint": [
+    [
+     -310,
+     -232
+    ],
+    [
+     -266,
+     -232
+    ],
+    [
+     -266,
+     -202
+    ],
+    [
+     -310,
+     -202
+    ]
+   ],
+   "kind": "academic",
+   "entrance": {
+    "x": -266,
+    "z": -217
+   },
+   "entranceSide": "E",
+   "note": "Adesh Campus Dept of Business Management BBA (DD3 on official map).",
+   "height": 14.4
+  },
+  {
+   "aliases": [
+    "dd4",
+    "dd5",
+    "commerce",
+    "block dd4"
+   ],
+   "levels": 4,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "dd4-business",
+   "name": "DD4 School of Business (Commerce)",
+   "footprint": [
+    [
+     -298,
+     -180
+    ],
+    [
+     -258,
+     -180
+    ],
+    [
+     -258,
+     -152
+    ],
+    [
+     -298,
+     -152
+    ]
+   ],
+   "kind": "academic",
+   "entrance": {
+    "x": -258,
+    "z": -166
+   },
+   "entranceSide": "E",
+   "note": "University School of Business Dept of Commerce (DD4 & DD5 on official map).",
+   "height": 14.4
+  },
+  {
+   "aliases": [
+    "football",
+    "football field",
+    "athletics",
+    "track",
+    "sports ground"
+   ],
+   "levels": 0,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "football",
+   "id": "football-ground",
+   "name": "Sports Ground & Running Track",
+   "kind": "sports",
+   "footprint": [
+    [
+     -314,
+     -166
+    ],
+    [
+     -314.769,
+     -160.537
+    ],
+    [
+     -317.045,
+     -155.285
+    ],
+    [
+     -320.741,
+     -150.444
+    ],
+    [
+     -325.716,
+     -146.201
+    ],
+    [
+     -331.777,
+     -142.719
+    ],
+    [
+     -338.693,
+     -140.131
+    ],
+    [
+     -346.196,
+     -138.538
+    ],
+    [
+     -354,
+     -138
+    ],
+    [
+     -361.804,
+     -138.538
+    ],
+    [
+     -369.307,
+     -140.131
+    ],
+    [
+     -376.223,
+     -142.719
+    ],
+    [
+     -382.284,
+     -146.201
+    ],
+    [
+     -387.259,
+     -150.444
+    ],
+    [
+     -390.955,
+     -155.285
+    ],
+    [
+     -393.231,
+     -160.537
+    ],
+    [
+     -394,
+     -166
+    ],
+    [
+     -393.231,
+     -171.463
+    ],
+    [
+     -390.955,
+     -176.715
+    ],
+    [
+     -387.259,
+     -181.556
+    ],
+    [
+     -382.284,
+     -185.799
+    ],
+    [
+     -376.223,
+     -189.281
+    ],
+    [
+     -369.307,
+     -191.869
+    ],
+    [
+     -361.804,
+     -193.462
+    ],
+    [
+     -354,
+     -194
+    ],
+    [
+     -346.196,
+     -193.462
+    ],
+    [
+     -338.693,
+     -191.869
+    ],
+    [
+     -331.777,
+     -189.281
+    ],
+    [
+     -325.716,
+     -185.799
+    ],
+    [
+     -320.741,
+     -181.556
+    ],
+    [
+     -317.045,
+     -176.715
+    ],
+    [
+     -314.769,
+     -171.463
+    ]
+   ],
+   "height": 0.1,
+   "entranceSide": "E",
+   "note": "Sports Ground athletic track on official map."
+  },
+  {
+   "aliases": [
+    "sports",
+    "indoor stadium",
+    "gym",
+    "sports complex",
+    "sports department"
+   ],
+   "levels": 3,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "stadium",
+   "id": "sports-complex",
+   "name": "Sports Complex (Indoor Stadium)",
+   "kind": "sports",
+   "footprint": [
+    [
+     -243,
+     -54
+    ],
+    [
+     -167,
+     -54
+    ],
+    [
+     -160,
+     -44
+    ],
+    [
+     -160,
+     -26
+    ],
+    [
+     -167,
+     -16
+    ],
+    [
+     -243,
+     -16
+    ],
+    [
+     -250,
+     -26
+    ],
+    [
+     -250,
+     -44
+    ]
+   ],
+   "height": 12,
+   "entrance": {
+    "x": -205,
+    "z": -54
+   },
+   "entranceSide": "N",
+   "note": "Indoor sports complex and gymnasium on official map."
+  },
+  {
+   "aliases": [
+    "d block parking",
+    "parking d block"
+   ],
+   "levels": 0,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "parking",
+   "id": "parking-d-block",
+   "name": "D-Block Parking Strip",
+   "kind": "parking",
+   "footprint": [
+    [
+     -5,
+     -195
+    ],
+    [
+     15,
+     -195
+    ],
+    [
+     15,
+     -105
+    ],
+    [
+     -5,
+     -105
+    ]
+   ],
+   "height": 0.1,
+   "entrance": {
+    "x": -5,
+    "z": -150
+   },
+   "entranceSide": "W",
+   "note": "Parking strip along eastern D-Block road."
+  },
+  {
+   "aliases": [
+    "boys hostel",
+    "boys hostel south"
+   ],
+   "levels": 6,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "boys-hostel-south",
+   "name": "Boys Hostel Complex",
+   "footprint": [
+    [
+     252.5,
+     125
+    ],
+    [
+     307.5,
+     125
+    ],
+    [
+     307.5,
+     165
+    ],
+    [
+     252.5,
+     165
+    ]
+   ],
+   "kind": "hostel",
+   "entrance": {
+    "x": 265,
+    "z": 125
+   },
+   "entranceSide": "N",
+   "note": "Boys Hostel complex past Gate 4 on hand-drawn reference.",
+   "height": 21.6
+  },
+  {
+   "aliases": [
+    "zakir hostel",
+    "zakir a",
+    "zakir b",
+    "zakir c",
+    "zakir d",
+    "zakir residence"
+   ],
+   "levels": 6,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "zakir-hostel",
+   "name": "Zakir Hall of Residence (A, B, C, D)",
+   "footprint": [
+    [
+     -5,
+     88
+    ],
+    [
+     55,
+     88
+    ],
+    [
+     55,
+     128
+    ],
+    [
+     -5,
+     128
+    ]
+   ],
+   "kind": "hostel",
+   "entranceSide": "N",
+   "note": "Zakir Hostels A, B, C, D on official map.",
+   "height": 21.6
+  },
+  {
+   "aliases": [
+    "oat",
+    "amphitheatre",
+    "open air theatre",
+    "open theater"
+   ],
+   "levels": 0,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "theatre",
+   "id": "open-air-theatre",
+   "name": "Open Theater",
+   "kind": "landmark",
+   "footprint": [
+    [
+     162,
+     110
+    ],
+    [
+     161.591,
+     113.106
+    ],
+    [
+     160.392,
+     116
+    ],
+    [
+     158.485,
+     118.485
+    ],
+    [
+     156,
+     120.392
+    ],
+    [
+     153.106,
+     121.591
+    ],
+    [
+     150,
+     122
+    ],
+    [
+     146.894,
+     121.591
+    ],
+    [
+     144,
+     120.392
+    ],
+    [
+     141.515,
+     118.485
+    ],
+    [
+     139.608,
+     116
+    ],
+    [
+     138.409,
+     113.106
+    ],
+    [
+     138,
+     110
+    ],
+    [
+     138.409,
+     106.894
+    ],
+    [
+     139.608,
+     104
+    ],
+    [
+     141.515,
+     101.515
+    ],
+    [
+     144,
+     99.608
+    ],
+    [
+     146.894,
+     98.409
+    ],
+    [
+     150,
+     98
+    ],
+    [
+     153.106,
+     98.409
+    ],
+    [
+     156,
+     99.608
+    ],
+    [
+     158.485,
+     101.515
+    ],
+    [
+     160.392,
+     104
+    ],
+    [
+     161.591,
+     106.894
+    ]
+   ],
+   "height": 3,
+   "entranceSide": "N",
+   "note": "Open Theater in NCT courtyard on official map."
+  },
+  {
+   "aliases": [
+    "nct 1",
+    "nct 2",
+    "nct hostels",
+    "boys hostel 1"
+   ],
+   "levels": 6,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "boys-hostel-1",
+   "name": "NCT 1 & 2 Hostels",
+   "footprint": [
+    [
+     179,
+     90
+    ],
+    [
+     211,
+     90
+    ],
+    [
+     211,
+     130
+    ],
+    [
+     179,
+     130
+    ]
+   ],
+   "kind": "hostel",
+   "entranceSide": "W",
+   "note": "NCT 1 & 2 student residence.",
+   "height": 21.6
+  },
+  {
+   "aliases": [
+    "nct 3",
+    "nct 4",
+    "boys hostel 2"
+   ],
+   "levels": 6,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "boys-hostel-2",
+   "name": "NCT 3 & 4 Hostels",
+   "footprint": [
+    [
+     130,
+     127
+    ],
+    [
+     170,
+     127
+    ],
+    [
+     170,
+     149
+    ],
+    [
+     130,
+     149
+    ]
+   ],
+   "kind": "hostel",
+   "entranceSide": "N",
+   "note": "NCT 3 & 4 student residence.",
+   "height": 21.6
+  },
+  {
+   "aliases": [
+    "nct 5",
+    "nct 6",
+    "boys hostel 3"
+   ],
+   "levels": 6,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "boys-hostel-3",
+   "name": "NCT 5 & 6 Hostels",
+   "footprint": [
+    [
+     89,
+     90
+    ],
+    [
+     121,
+     90
+    ],
+    [
+     121,
+     130
+    ],
+    [
+     89,
+     130
+    ]
+   ],
+   "kind": "hostel",
+   "entranceSide": "E",
+   "note": "NCT 5 & 6 student residence.",
+   "height": 21.6
+  },
+  {
+   "aliases": [
+    "night canteen",
+    "mess",
+    "tuck shop"
+   ],
+   "levels": 2,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "hostel-mess",
+   "name": "Hostel Mess & Night Canteen",
+   "footprint": [
+    [
+     67,
+     101
+    ],
+    [
+     89,
+     101
+    ],
+    [
+     89,
+     119
+    ],
+    [
+     67,
+     119
+    ]
+   ],
+   "kind": "food",
+   "entranceSide": "N",
+   "note": "Hostel mess facility.",
+   "height": 7.2
+  },
+  {
+   "aliases": [
+    "parking",
+    "car park",
+    "student parking",
+    "visitor parking"
+   ],
+   "levels": 0,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "parking",
+   "id": "visitor-parking",
+   "name": "Visitor & Student Parking (Gate 1)",
+   "kind": "parking",
+   "footprint": [
+    [
+     451,
+     -272
+    ],
+    [
+     473,
+     -272
+    ],
+    [
+     473,
+     -256
+    ],
+    [
+     451,
+     -256
+    ]
+   ],
+   "height": 0.1,
+   "entranceSide": "W"
+  },
+  {
+   "aliases": [
+    "east parking",
+    "student parking east"
+   ],
+   "levels": 0,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "parking",
+   "id": "student-parking-east",
+   "name": "Student Parking (East)",
+   "kind": "parking",
+   "footprint": [
+    [
+     475,
+     -235
+    ],
+    [
+     505,
+     -235
+    ],
+    [
+     505,
+     -215
+    ],
+    [
+     475,
+     -215
+    ]
+   ],
+   "height": 0.1,
+   "entranceSide": "W"
+  },
+  {
+   "aliases": [
+    "central parking",
+    "parking central"
+   ],
+   "levels": 0,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "parking",
+   "id": "central-parking",
+   "name": "Central Parking",
+   "kind": "parking",
+   "footprint": [
+    [
+     385,
+     -205
+    ],
+    [
+     411,
+     -205
+    ],
+    [
+     411,
+     -155
+    ],
+    [
+     385,
+     -155
+    ]
+   ],
+   "height": 0.1,
+   "entranceSide": "W"
+  },
+  {
+   "aliases": [
+    "admin",
+    "reception",
+    "visitor",
+    "registrar",
+    "administration"
+   ],
+   "levels": 3,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "admin-block",
+   "name": "Administration Block & Visitor Reception",
+   "footprint": [
+    [
+     475,
+     -212
+    ],
+    [
+     495,
+     -212
+    ],
+    [
+     495,
+     -198
+    ],
+    [
+     475,
+     -198
+    ]
+   ],
+   "kind": "admin",
+   "entranceSide": "N",
+   "height": 10.8
+  },
+  {
+   "aliases": [
+    "hospital",
+    "health centre",
+    "dispensary",
+    "clinic"
+   ],
+   "levels": 2,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "medical-centre",
+   "name": "Medical Centre & Dispensary",
+   "footprint": [
+    [
+     445,
+     -212
+    ],
+    [
+     465,
+     -212
+    ],
+    [
+     465,
+     -198
+    ],
+    [
+     445,
+     -198
+    ]
+   ],
+   "kind": "medical",
+   "entranceSide": "N",
+   "height": 7.2
+  },
+  {
+   "aliases": [
+    "sbi",
+    "hdfc",
+    "atm",
+    "bank"
+   ],
+   "levels": 1,
+   "geometrySource": "estimated",
+   "nameSource": "official",
+   "nameConfidence": "verified",
+   "sources": [
+    "src-official-map"
+   ],
+   "render": "box",
+   "id": "banks-atm",
+   "name": "Banks & ATMs (SBI, HDFC)",
+   "footprint": [
+    [
+     460,
+     -82
+    ],
+    [
+     480,
+     -82
+    ],
+    [
+     480,
+     -68
+    ],
+    [
+     460,
+     -68
+    ]
+   ],
+   "kind": "bank",
+   "entranceSide": "N",
+   "height": 3.6
+  }
+ ],
+ "roads": [
+  {
+   "id": "nh95",
+   "name": "NH-95 Chandigarh–Ludhiana Highway",
+   "class": "highway",
+   "width": 24,
+   "points": [
+    [
+     -520,
+     -350
+    ],
+    [
+     -260,
+     -345
+    ],
+    [
+     -130,
+     -332
+    ],
+    [
+     -51,
+     -284
+    ],
+    [
+     50,
+     -272
+    ],
+    [
+     140,
+     -295
+    ],
+    [
+     275,
+     -290
+    ],
+    [
+     448,
+     -282
+    ],
+    [
+     520,
+     -280
+    ]
+   ],
+   "sidewalks": false,
+   "note": "Frontage highway alignment."
+  },
+  {
+   "id": "gate2-corridor",
+   "name": "Gate 2 Corridor",
+   "class": "avenue",
+   "width": 10,
+   "points": [
+    [
+     275,
+     -290
+    ],
+    [
+     275,
+     -220
+    ],
+    [
+     275,
+     -145
+    ],
+    [
+     275,
+     -125
+    ],
+    [
+     275,
+     -74
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "gate2-a1-curve",
+   "name": "A1 Approach Curve",
+   "class": "lane",
+   "width": 8,
+   "points": [
+    [
+     275,
+     -220
+    ],
+    [
+     285,
+     -226
+    ],
+    [
+     305,
+     -234
+    ],
+    [
+     330,
+     -236
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "a1-south",
+   "name": "A1 South Road",
+   "class": "lane",
+   "width": 8,
+   "points": [
+    [
+     330,
+     -236
+    ],
+    [
+     435,
+     -236
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "a1-west",
+   "name": "A1 West Link",
+   "class": "lane",
+   "width": 7,
+   "points": [
+    [
+     330,
+     -236
+    ],
+    [
+     330,
+     -278
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "a1-north",
+   "name": "A1 North Road",
+   "class": "lane",
+   "width": 7,
+   "points": [
+    [
+     330,
+     -278
+    ],
+    [
+     425,
+     -278
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "a1-east",
+   "name": "A1 East Link",
+   "class": "lane",
+   "width": 7,
+   "points": [
+    [
+     425,
+     -278
+    ],
+    [
+     435,
+     -236
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "gate1-link",
+   "name": "Gate 1 Access",
+   "class": "lane",
+   "width": 9,
+   "points": [
+    [
+     448,
+     -282
+    ],
+    [
+     435,
+     -236
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "roundabout-east",
+   "name": "East Parking Access",
+   "class": "lane",
+   "width": 8,
+   "points": [
+    [
+     435,
+     -236
+    ],
+    [
+     470,
+     -236
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "curved-avenue",
+   "name": "East Campus Avenue",
+   "class": "avenue",
+   "width": 10,
+   "points": [
+    [
+     435,
+     -236
+    ],
+    [
+     430,
+     -200
+    ],
+    [
+     422,
+     -155
+    ],
+    [
+     412,
+     -120
+    ],
+    [
+     395,
+     -95
+    ],
+    [
+     360,
+     -82
+    ],
+    [
+     320,
+     -78
+    ],
+    [
+     275,
+     -74
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "fountain-west",
+   "name": "Fountain West Access",
+   "class": "lane",
+   "width": 8,
+   "points": [
+    [
+     275,
+     -145
+    ],
+    [
+     308,
+     -145
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "fountain-east",
+   "name": "Fountain East Access",
+   "class": "lane",
+   "width": 8,
+   "points": [
+    [
+     336,
+     -145
+    ],
+    [
+     375,
+     -145
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "fountain-south",
+   "name": "Fountain South Access",
+   "class": "lane",
+   "width": 8,
+   "points": [
+    [
+     322,
+     -131
+    ],
+    [
+     320,
+     -78
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "b1-loop",
+   "name": "B1 Access Loop",
+   "class": "lane",
+   "width": 7,
+   "points": [
+    [
+     275,
+     -190
+    ],
+    [
+     138,
+     -190
+    ],
+    [
+     138,
+     -125
+    ],
+    [
+     205,
+     -125
+    ],
+    [
+     275,
+     -125
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "b4-road",
+   "name": "B4 Access Road",
+   "class": "lane",
+   "width": 7,
+   "points": [
+    [
+     205,
+     -125
+    ],
+    [
+     205,
+     -74
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "b2-south",
+   "name": "B2 South Road",
+   "class": "avenue",
+   "width": 9,
+   "points": [
+    [
+     205,
+     -74
+    ],
+    [
+     275,
+     -74
+    ],
+    [
+     284,
+     -74
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "gate4-corridor",
+   "name": "Gate 4 Corridor",
+   "class": "avenue",
+   "width": 9,
+   "points": [
+    [
+     275,
+     -74
+    ],
+    [
+     212,
+     -74
+    ],
+    [
+     212,
+     -50
+    ],
+    [
+     212,
+     -15
+    ],
+    [
+     212,
+     35
+    ],
+    [
+     212,
+     50
+    ],
+    [
+     212,
+     65
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "east-mg-road",
+   "name": "C-Block Academic Way",
+   "class": "lane",
+   "width": 8,
+   "points": [
+    [
+     284,
+     -74
+    ],
+    [
+     284,
+     -45
+    ],
+    [
+     284,
+     -15
+    ],
+    [
+     284,
+     15
+    ],
+    [
+     284,
+     50
+    ],
+    [
+     284,
+     75
+    ]
+   ],
+   "sidewalks": false
+  },
+  {
+   "id": "south-mg-road",
+   "name": "Main Ground South Road",
+   "class": "lane",
+   "width": 8,
+   "points": [
+    [
+     212,
+     50
+    ],
+    [
+     250,
+     50
+    ],
+    [
+     284,
+     50
+    ]
+   ],
+   "sidewalks": false
+  },
+  {
+   "id": "gate3-road",
+   "name": "Gate 3 Access Road",
+   "class": "lane",
+   "width": 9,
+   "points": [
+    [
+     -51,
+     -284
+    ],
+    [
+     -51,
+     -233
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "d-north-road",
+   "name": "North Internal Road",
+   "class": "lane",
+   "width": 8,
+   "points": [
+    [
+     -51,
+     -233
+    ],
+    [
+     -85,
+     -233
+    ],
+    [
+     -95,
+     -233
+    ],
+    [
+     -135,
+     -233
+    ],
+    [
+     -135,
+     -266
+    ],
+    [
+     -135,
+     -276
+    ],
+    [
+     -135,
+     -281
+    ],
+    [
+     -135,
+     -310
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "dd-access",
+   "name": "DD Blocks Access Road",
+   "class": "lane",
+   "width": 7,
+   "points": [
+    [
+     -135,
+     -276
+    ],
+    [
+     -155,
+     -276
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "d-east-road",
+   "name": "D-Block East Road",
+   "class": "lane",
+   "width": 8,
+   "points": [
+    [
+     -85,
+     -233
+    ],
+    [
+     -85,
+     -222
+    ],
+    [
+     -50,
+     -218
+    ],
+    [
+     -20,
+     -206
+    ],
+    [
+     -15,
+     -170
+    ],
+    [
+     -15,
+     -130
+    ],
+    [
+     -15,
+     -118
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "d-inner-loop",
+   "name": "D-Block Inner Loop",
+   "class": "lane",
+   "width": 7,
+   "points": [
+    [
+     -85,
+     -222
+    ],
+    [
+     -124,
+     -222
+    ],
+    [
+     -132,
+     -205
+    ],
+    [
+     -132,
+     -178
+    ],
+    [
+     -132,
+     -150
+    ],
+    [
+     -115,
+     -130
+    ],
+    [
+     -70,
+     -125
+    ],
+    [
+     -20,
+     -118
+    ],
+    [
+     -15,
+     -118
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "d-south-approach",
+   "name": "Gate 7 North Approach Road",
+   "class": "lane",
+   "width": 8,
+   "points": [
+    [
+     -15,
+     -118
+    ],
+    [
+     -15,
+     -90
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "shivalik-loop",
+   "name": "Shivalik Hostel Loop",
+   "class": "lane",
+   "width": 7,
+   "points": [
+    [
+     -124,
+     -222
+    ],
+    [
+     -148,
+     -222
+    ],
+    [
+     -168,
+     -228
+    ],
+    [
+     -205,
+     -200
+    ],
+    [
+     -215,
+     -168
+    ],
+    [
+     -195,
+     -142
+    ],
+    [
+     -140,
+     -140
+    ],
+    [
+     -132,
+     -150
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "b5-b4-road",
+   "name": "Gate 7 – B5 – LC Hostel – B4 Road",
+   "class": "lane",
+   "width": 8,
+   "points": [
+    [
+     -15,
+     -90
+    ],
+    [
+     50,
+     -90
+    ],
+    [
+     105,
+     -90
+    ],
+    [
+     155,
+     -90
+    ],
+    [
+     172,
+     -74
+    ],
+    [
+     205,
+     -74
+    ]
+   ],
+   "sidewalks": false
+  },
+  {
+   "id": "gate8-road",
+   "name": "Gate 7 – Gate 8 Road",
+   "class": "lane",
+   "width": 8,
+   "points": [
+    [
+     -15,
+     -90
+    ],
+    [
+     -70,
+     -85
+    ],
+    [
+     -150,
+     -78
+    ],
+    [
+     -205,
+     -72
+    ],
+    [
+     -268,
+     -68
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "sports-spur",
+   "name": "Sports Complex Spur",
+   "class": "lane",
+   "width": 8,
+   "points": [
+    [
+     -205,
+     -72
+    ],
+    [
+     -205,
+     -60
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "gate7-gate4-road",
+   "name": "Gate 7 to Gate 4 Diagonal Avenue",
+   "class": "avenue",
+   "width": 9,
+   "points": [
+    [
+     -15,
+     -90
+    ],
+    [
+     35,
+     -55
+    ],
+    [
+     85,
+     -22
+    ],
+    [
+     140,
+     12
+    ],
+    [
+     190,
+     45
+    ],
+    [
+     212,
+     65
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "boys-hostel-road",
+   "name": "Boys Hostel Access Road",
+   "class": "lane",
+   "width": 8,
+   "points": [
+    [
+     212,
+     65
+    ],
+    [
+     245,
+     95
+    ],
+    [
+     265,
+     120
+    ]
+   ],
+   "sidewalks": true
+  },
+  {
+   "id": "south-hostel-road",
+   "name": "South Hostel Avenue",
+   "class": "ring",
+   "width": 10,
+   "points": [
+    [
+     -41,
+     215
+    ],
+    [
+     -41,
+     175
+    ],
+    [
+     25,
+     175
+    ],
+    [
+     150,
+     175
+    ],
+    [
+     228,
+     175
+    ],
+    [
+     228,
+     65
+    ],
+    [
+     212,
+     65
+    ]
+   ],
+   "sidewalks": true
+  }
+ ],
+ "ways": [
+  {
+   "id": "w1",
+   "name": "Gate 1 Wicket",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     438,
+     -282
+    ],
+    [
+     458,
+     -282
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w2",
+   "name": "Gate 2 Wicket",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     265,
+     -276
+    ],
+    [
+     285,
+     -276
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w3",
+   "name": "Gate 3 Wicket",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     -68,
+     -284
+    ],
+    [
+     -34,
+     -284
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w4",
+   "name": "Gate 7 Wicket",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     -32,
+     -90
+    ],
+    [
+     5,
+     -90
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w5",
+   "name": "Gate 4 Wicket",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     195,
+     65
+    ],
+    [
+     230,
+     65
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w6",
+   "name": "Gate 8 Wicket",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     -280,
+     -68
+    ],
+    [
+     -245,
+     -68
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w7",
+   "name": "VIP Gate Wicket",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     425,
+     -280
+    ],
+    [
+     445,
+     -280
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w8",
+   "name": "Roundabout Ring",
+   "kind": "plaza",
+   "width": 4,
+   "points": [
+    [
+     447,
+     -236
+    ],
+    [
+     446.087,
+     -231.408
+    ],
+    [
+     443.485,
+     -227.515
+    ],
+    [
+     439.592,
+     -224.913
+    ],
+    [
+     435,
+     -224
+    ],
+    [
+     430.408,
+     -224.913
+    ],
+    [
+     426.515,
+     -227.515
+    ],
+    [
+     423.913,
+     -231.408
+    ],
+    [
+     423,
+     -236
+    ],
+    [
+     423.913,
+     -240.592
+    ],
+    [
+     426.515,
+     -244.485
+    ],
+    [
+     430.408,
+     -247.087
+    ],
+    [
+     435,
+     -248
+    ],
+    [
+     439.592,
+     -247.087
+    ],
+    [
+     443.485,
+     -244.485
+    ],
+    [
+     446.087,
+     -240.592
+    ],
+    [
+     447,
+     -236
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w9",
+   "name": "Junction Crossing 275-74",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     265,
+     -74
+    ],
+    [
+     295,
+     -74
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w10",
+   "name": "Gate 2 Junction Crossing",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     275,
+     -83
+    ],
+    [
+     275,
+     -65
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w11",
+   "name": "East MG North Crossing",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     275,
+     -67
+    ],
+    [
+     295,
+     -67
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w12",
+   "name": "Fountain Plaza Ring",
+   "kind": "plaza",
+   "width": 4,
+   "points": [
+    [
+     336,
+     -145
+    ],
+    [
+     334.934,
+     -139.642
+    ],
+    [
+     331.899,
+     -135.101
+    ],
+    [
+     327.358,
+     -132.066
+    ],
+    [
+     322,
+     -131
+    ],
+    [
+     316.642,
+     -132.066
+    ],
+    [
+     312.101,
+     -135.101
+    ],
+    [
+     309.066,
+     -139.642
+    ],
+    [
+     308,
+     -145
+    ],
+    [
+     309.066,
+     -150.358
+    ],
+    [
+     312.101,
+     -154.899
+    ],
+    [
+     316.642,
+     -157.934
+    ],
+    [
+     322,
+     -159
+    ],
+    [
+     327.358,
+     -157.934
+    ],
+    [
+     331.899,
+     -154.899
+    ],
+    [
+     334.934,
+     -150.358
+    ],
+    [
+     336,
+     -145
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w13",
+   "name": "NCT Courtyard Ring",
+   "kind": "plaza",
+   "width": 4,
+   "points": [
+    [
+     164,
+     110
+    ],
+    [
+     162.934,
+     115.358
+    ],
+    [
+     159.899,
+     119.899
+    ],
+    [
+     155.358,
+     122.934
+    ],
+    [
+     150,
+     124
+    ],
+    [
+     144.642,
+     122.934
+    ],
+    [
+     140.101,
+     119.899
+    ],
+    [
+     137.066,
+     115.358
+    ],
+    [
+     136,
+     110
+    ],
+    [
+     137.066,
+     104.642
+    ],
+    [
+     140.101,
+     100.101
+    ],
+    [
+     144.642,
+     97.066
+    ],
+    [
+     150,
+     96
+    ],
+    [
+     155.358,
+     97.066
+    ],
+    [
+     159.899,
+     100.101
+    ],
+    [
+     162.934,
+     104.642
+    ],
+    [
+     164,
+     110
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w14",
+   "name": "Gate 1 Connector",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     448,
+     -282
+    ],
+    [
+     442,
+     -265
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w15",
+   "name": "Gate 2 Connector",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     275,
+     -284
+    ],
+    [
+     275,
+     -270
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w16",
+   "name": "Gate 3 Connector",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     -51,
+     -284
+    ],
+    [
+     -51,
+     -233
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w17",
+   "name": "Gate 3 Hub Crossing NS",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     -51,
+     -248
+    ],
+    [
+     -51,
+     -218
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w18",
+   "name": "Gate 3 Hub Crossing EW",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     -68,
+     -233
+    ],
+    [
+     -34,
+     -233
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w19",
+   "name": "Gate 7 Connector",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     -15,
+     -90
+    ],
+    [
+     -15,
+     -118
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w20",
+   "name": "Gate 7 Hub Crossing NS",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     -15,
+     -105
+    ],
+    [
+     -15,
+     -75
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w21",
+   "name": "Gate 7 Hub Crossing EW",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     -32,
+     -90
+    ],
+    [
+     5,
+     -90
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w22",
+   "name": "Gate 7 Diagonal Crossing",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     -25,
+     -98
+    ],
+    [
+     0,
+     -80
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w23",
+   "name": "Gate 4 Connector",
+   "kind": "footpath",
+   "width": 4,
+   "points": [
+    [
+     212,
+     65
+    ],
+    [
+     212,
+     50
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w24",
+   "name": "Gate 4 Hub Crossing NS",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     212,
+     50
+    ],
+    [
+     212,
+     78
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w25",
+   "name": "Gate 4 Hub Crossing EW",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     195,
+     65
+    ],
+    [
+     230,
+     65
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w26",
+   "name": "Gate 8 Connector",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     -268,
+     -68
+    ],
+    [
+     -230,
+     -68
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w27",
+   "name": "Gate 8 Hub Crossing EW",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     -280,
+     -68
+    ],
+    [
+     -245,
+     -68
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w28",
+   "name": "Gate 8 Hub Crossing NS",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     -268,
+     -82
+    ],
+    [
+     -268,
+     -55
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w29",
+   "name": "VIP Gate Connector",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     435,
+     -280
+    ],
+    [
+     435,
+     -248
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w30",
+   "name": "D-North/East Hub Crossing NS",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     -85,
+     -241
+    ],
+    [
+     -85,
+     -218
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w31",
+   "name": "D-North/East Hub Crossing EW",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     -102,
+     -233
+    ],
+    [
+     -68,
+     -233
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w32",
+   "name": "D-East/Inner Loop Crossing EW",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     -102,
+     -222
+    ],
+    [
+     -68,
+     -222
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w33",
+   "name": "D-East D4-Merge Approach",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     -15,
+     -132
+    ],
+    [
+     -15,
+     -105
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w34",
+   "name": "D-East D4-Merge EW Crossing",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     -32,
+     -118
+    ],
+    [
+     2,
+     -118
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w35",
+   "name": "DD Access Junction Crossing NS",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     -135,
+     -290
+    ],
+    [
+     -135,
+     -260
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w36",
+   "name": "DD Access Junction Crossing EW",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     -160,
+     -276
+    ],
+    [
+     -120,
+     -276
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w37",
+   "name": "Sports Spur Crossing NS",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     -205,
+     -84
+    ],
+    [
+     -205,
+     -48
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w38",
+   "name": "Sports Spur Crossing EW",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     -218,
+     -72
+    ],
+    [
+     -192,
+     -72
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w39",
+   "name": "B4 Junction Crossing EW",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     180,
+     -74
+    ],
+    [
+     220,
+     -74
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w40",
+   "name": "B4 Junction Crossing NS",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     205,
+     -90
+    ],
+    [
+     205,
+     -60
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w41",
+   "name": "Gate 4 North Junction NS",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     212,
+     -90
+    ],
+    [
+     212,
+     -60
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w42",
+   "name": "Gate 4 North Junction EW",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     198,
+     -74
+    ],
+    [
+     226,
+     -74
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w43",
+   "name": "Boys Hostel South Crossing",
+   "kind": "crossing",
+   "width": 4,
+   "points": [
+    [
+     245,
+     120
+    ],
+    [
+     275,
+     120
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w44",
+   "name": "ATM Spur",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     395,
+     -95
+    ],
+    [
+     460,
+     -75
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w45",
+   "name": "Admin Spur",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     435,
+     -236
+    ],
+    [
+     470,
+     -236
+    ],
+    [
+     470,
+     -212
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w46",
+   "name": "C-Block Academic Way",
+   "kind": "footpath",
+   "width": 4,
+   "points": [
+    [
+     284,
+     -74
+    ],
+    [
+     284,
+     -67
+    ],
+    [
+     284,
+     -45
+    ],
+    [
+     284,
+     -30
+    ],
+    [
+     284,
+     -15
+    ],
+    [
+     284,
+     -1
+    ],
+    [
+     284,
+     15
+    ],
+    [
+     284,
+     28
+    ],
+    [
+     284,
+     50
+    ],
+    [
+     284,
+     68
+    ],
+    [
+     284,
+     75
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w47",
+   "name": "Main Ground South Road",
+   "kind": "footpath",
+   "width": 4,
+   "points": [
+    [
+     284,
+     50
+    ],
+    [
+     250,
+     50
+    ],
+    [
+     212,
+     50
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w48",
+   "name": "C1 Spur",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     284,
+     -30
+    ],
+    [
+     296,
+     -30
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w49",
+   "name": "FR Spur",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     284,
+     -1
+    ],
+    [
+     296,
+     -1
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w50",
+   "name": "C2 Spur",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     284,
+     28
+    ],
+    [
+     296,
+     28
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w51",
+   "name": "Tagore Spur",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     284,
+     68
+    ],
+    [
+     295,
+     68
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w52",
+   "name": "C3 Spur",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     212,
+     -17
+    ],
+    [
+     202,
+     -17
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w53",
+   "name": "Staff Spur",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     212,
+     20
+    ],
+    [
+     205,
+     20
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w54",
+   "name": "DD1 Access Walk",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     -185,
+     -281
+    ],
+    [
+     -185,
+     -276
+    ],
+    [
+     -135,
+     -276
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w55",
+   "name": "DD2 Access Walk",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     -180,
+     -270
+    ],
+    [
+     -180,
+     -276
+    ],
+    [
+     -135,
+     -276
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w56",
+   "name": "DD Campus Walk",
+   "kind": "footpath",
+   "width": 3.5,
+   "points": [
+    [
+     -268,
+     -68
+    ],
+    [
+     -255,
+     -68
+    ],
+    [
+     -255,
+     -166
+    ],
+    [
+     -255,
+     -217
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w57",
+   "name": "DD Campus Walk Link",
+   "kind": "footpath",
+   "width": 3.5,
+   "points": [
+    [
+     -255,
+     -217
+    ],
+    [
+     -255,
+     -276
+    ],
+    [
+     -185,
+     -276
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w58",
+   "name": "Sports Ground Walk",
+   "kind": "footpath",
+   "width": 3.5,
+   "points": [
+    [
+     -255,
+     -145
+    ],
+    [
+     -325,
+     -145
+    ],
+    [
+     -325,
+     -166
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w59",
+   "name": "North Facility Walk",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     -146,
+     -300
+    ],
+    [
+     -135,
+     -300
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w60",
+   "name": "Gobind Hostel Walk",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     -113,
+     -281
+    ],
+    [
+     -135,
+     -281
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w61",
+   "name": "TB1 Access Walk",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     -108,
+     -266
+    ],
+    [
+     -135,
+     -266
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w62",
+   "name": "D8 North Walk",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     -95,
+     -242
+    ],
+    [
+     -95,
+     -233
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w63",
+   "name": "Orientation Venue Walk",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     -27,
+     -245
+    ],
+    [
+     -51,
+     -245
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w64",
+   "name": "D1 North Courtyard Walk",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     -70,
+     -198
+    ],
+    [
+     -70,
+     -175
+    ],
+    [
+     -75,
+     -175
+    ],
+    [
+     -75,
+     -135
+    ],
+    [
+     -70,
+     -125
+    ],
+    [
+     -70,
+     -112
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w65",
+   "name": "D1 West Courtyard Walk",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     -105,
+     -190
+    ],
+    [
+     -85,
+     -190
+    ],
+    [
+     -75,
+     -175
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w66",
+   "name": "D2 North Walk",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     -36,
+     -200
+    ],
+    [
+     -36,
+     -215
+    ],
+    [
+     -50,
+     -218
+    ],
+    [
+     -50,
+     -210
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w67",
+   "name": "D3 Courtyard Walk",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     -55,
+     -170
+    ],
+    [
+     -75,
+     -170
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w68",
+   "name": "D4 Courtyard Walk",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     -60,
+     -146
+    ],
+    [
+     -75,
+     -146
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w69",
+   "name": "D5 Courtyard Walk",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     -105,
+     -162
+    ],
+    [
+     -85,
+     -162
+    ],
+    [
+     -75,
+     -135
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w70",
+   "name": "D7 Loop Walk",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     -148,
+     -192
+    ],
+    [
+     -132,
+     -192
+    ],
+    [
+     -132,
+     -178
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w71",
+   "name": "D6 Library Loop Walk",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     -142,
+     -178
+    ],
+    [
+     -125,
+     -178
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w72",
+   "name": "Shivalik Loop Walk",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     -171,
+     -168
+    ],
+    [
+     -165,
+     -168
+    ],
+    [
+     -165,
+     -160
+    ],
+    [
+     -132,
+     -160
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w73",
+   "name": "Tower Walk",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     -230,
+     -160
+    ],
+    [
+     -210,
+     -160
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w74",
+   "name": "Gate 7 – B5 – LC Hostel – B4 Road",
+   "kind": "footpath",
+   "width": 4,
+   "points": [
+    [
+     -15,
+     -90
+    ],
+    [
+     50,
+     -90
+    ],
+    [
+     105,
+     -90
+    ],
+    [
+     155,
+     -90
+    ],
+    [
+     172,
+     -74
+    ],
+    [
+     182,
+     -74
+    ],
+    [
+     205,
+     -74
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w75",
+   "name": "B5 Legal Studies Walk",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     50,
+     -98
+    ],
+    [
+     50,
+     -90
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w76",
+   "name": "LC Girls Hostel Walk",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     105,
+     -101
+    ],
+    [
+     105,
+     -90
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w77",
+   "name": "B4 Access Spur",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     182,
+     -89
+    ],
+    [
+     182,
+     -74
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w78",
+   "name": "Sports Complex Walk",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     -205,
+     -54
+    ],
+    [
+     -205,
+     -72
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w79",
+   "name": "Boys Hostel South Walk",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     265,
+     125
+    ],
+    [
+     265,
+     115
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w80",
+   "name": "Zakir Access Walk",
+   "kind": "footpath",
+   "width": 3.5,
+   "points": [
+    [
+     -15,
+     80
+    ],
+    [
+     25,
+     80
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w81",
+   "name": "Zakir South Link",
+   "kind": "footpath",
+   "width": 3.5,
+   "points": [
+    [
+     -15,
+     80
+    ],
+    [
+     -15,
+     175
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w82",
+   "name": "NCT South Link",
+   "kind": "footpath",
+   "width": 3.5,
+   "points": [
+    [
+     136,
+     110
+    ],
+    [
+     125,
+     110
+    ],
+    [
+     125,
+     175
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w83",
+   "name": "Hostel Mess Walk",
+   "kind": "footpath",
+   "width": 3,
+   "points": [
+    [
+     78,
+     101
+    ],
+    [
+     78,
+     80
+    ],
+    [
+     25,
+     80
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w84",
+   "name": "Hostel Underbridge Walk",
+   "kind": "footpath",
+   "width": 3.5,
+   "points": [
+    [
+     212,
+     50
+    ],
+    [
+     25,
+     50
+    ],
+    [
+     25,
+     80
+    ],
+    [
+     -15,
+     80
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  },
+  {
+   "id": "w85",
+   "name": "Southeast Perimeter Walk",
+   "kind": "footpath",
+   "width": 3.5,
+   "points": [
+    [
+     275,
+     75
+    ],
+    [
+     284,
+     75
+    ],
+    [
+     284,
+     88
+    ],
+    [
+     330,
+     88
+    ],
+    [
+     330,
+     155
+    ]
+   ],
+   "walkable": true,
+   "level": 0
+  }
+ ],
+ "areas": [
+  {
+   "id": "fountain-plaza-paving",
+   "type": "plaza",
+   "polygon": [
+    [
+     338,
+     -145
+    ],
+    [
+     337.455,
+     -140.859
+    ],
+    [
+     335.856,
+     -137
+    ],
+    [
+     333.314,
+     -133.686
+    ],
+    [
+     330,
+     -131.144
+    ],
+    [
+     326.141,
+     -129.545
+    ],
+    [
+     322,
+     -129
+    ],
+    [
+     317.859,
+     -129.545
+    ],
+    [
+     314,
+     -131.144
+    ],
+    [
+     310.686,
+     -133.686
+    ],
+    [
+     308.144,
+     -137
+    ],
+    [
+     306.545,
+     -140.859
+    ],
+    [
+     306,
+     -145
+    ],
+    [
+     306.545,
+     -149.141
+    ],
+    [
+     308.144,
+     -153
+    ],
+    [
+     310.686,
+     -156.314
+    ],
+    [
+     314,
+     -158.856
+    ],
+    [
+     317.859,
+     -160.455
+    ],
+    [
+     322,
+     -161
+    ],
+    [
+     326.141,
+     -160.455
+    ],
+    [
+     330,
+     -158.856
+    ],
+    [
+     333.314,
+     -156.314
+    ],
+    [
+     335.856,
+     -153
+    ],
+    [
+     337.455,
+     -149.141
+    ]
+   ],
+   "name": "Fountain Plaza"
+  },
+  {
+   "id": "lawn-a1-west",
+   "type": "lawn",
+   "polygon": [
+    [
+     287,
+     -275
+    ],
+    [
+     323,
+     -275
+    ],
+    [
+     323,
+     -245
+    ],
+    [
+     287,
+     -245
+    ]
+   ],
+   "name": "West A1 Lawn"
+  },
+  {
+   "id": "lawn-fountain-se",
+   "type": "lawn",
+   "polygon": [
+    [
+     335,
+     -127.5
+    ],
+    [
+     365,
+     -127.5
+    ],
+    [
+     365,
+     -102.5
+    ],
+    [
+     335,
+     -102.5
+    ]
+   ],
+   "name": "Fountain Southeast Lawn"
+  },
+  {
+   "id": "lawn-main-ground",
+   "type": "sports",
+   "polygon": [
+    [
+     222,
+     -38
+    ],
+    [
+     272,
+     -38
+    ],
+    [
+     272,
+     32
+    ],
+    [
+     222,
+     32
+    ]
+   ],
+   "name": "Main Ground Field"
+  },
+  {
+   "id": "lawn-sports-west",
+   "type": "sports",
+   "polygon": [
+    [
+     -314,
+     -166
+    ],
+    [
+     -314.769,
+     -160.537
+    ],
+    [
+     -317.045,
+     -155.285
+    ],
+    [
+     -320.741,
+     -150.444
+    ],
+    [
+     -325.716,
+     -146.201
+    ],
+    [
+     -331.777,
+     -142.719
+    ],
+    [
+     -338.693,
+     -140.131
+    ],
+    [
+     -346.196,
+     -138.538
+    ],
+    [
+     -354,
+     -138
+    ],
+    [
+     -361.804,
+     -138.538
+    ],
+    [
+     -369.307,
+     -140.131
+    ],
+    [
+     -376.223,
+     -142.719
+    ],
+    [
+     -382.284,
+     -146.201
+    ],
+    [
+     -387.259,
+     -150.444
+    ],
+    [
+     -390.955,
+     -155.285
+    ],
+    [
+     -393.231,
+     -160.537
+    ],
+    [
+     -394,
+     -166
+    ],
+    [
+     -393.231,
+     -171.463
+    ],
+    [
+     -390.955,
+     -176.715
+    ],
+    [
+     -387.259,
+     -181.556
+    ],
+    [
+     -382.284,
+     -185.799
+    ],
+    [
+     -376.223,
+     -189.281
+    ],
+    [
+     -369.307,
+     -191.869
+    ],
+    [
+     -361.804,
+     -193.462
+    ],
+    [
+     -354,
+     -194
+    ],
+    [
+     -346.196,
+     -193.462
+    ],
+    [
+     -338.693,
+     -191.869
+    ],
+    [
+     -331.777,
+     -189.281
+    ],
+    [
+     -325.716,
+     -185.799
+    ],
+    [
+     -320.741,
+     -181.556
+    ],
+    [
+     -317.045,
+     -176.715
+    ],
+    [
+     -314.769,
+     -171.463
+    ]
+   ],
+   "name": "West Athletic Field"
+  },
+  {
+   "id": "lawn-hostels-s",
+   "type": "lawn",
+   "polygon": [
+    [
+     110,
+     90
+    ],
+    [
+     190,
+     90
+    ],
+    [
+     190,
+     130
+    ],
+    [
+     110,
+     130
+    ]
+   ],
+   "name": "Hostel Green Courtyard"
+  },
+  {
+   "id": "lawn-gobind-d8",
+   "type": "lawn",
+   "polygon": [
+    [
+     -122,
+     -295
+    ],
+    [
+     -68,
+     -295
+    ],
+    [
+     -68,
+     -238
+    ],
+    [
+     -122,
+     -238
+    ]
+   ],
+   "name": "Gobind D8 Lawn"
+  },
+  {
+   "id": "lawn-acad-d",
+   "type": "lawn",
+   "polygon": [
+    [
+     -195,
+     -135
+    ],
+    [
+     -130,
+     -135
+    ],
+    [
+     -130,
+     -85
+    ],
+    [
+     -195,
+     -85
+    ]
+   ],
+   "name": "D-Block Lawn Belt"
+  },
+  {
+   "id": "lawn-b5-diagonal",
+   "type": "lawn",
+   "polygon": [
+    [
+     0,
+     -84
+    ],
+    [
+     115,
+     -84
+    ],
+    [
+     105,
+     -35
+    ],
+    [
+     -5,
+     -65
+    ]
+   ],
+   "name": "South B5 Lawn"
+  },
+  {
+   "id": "lawn-north-belt",
+   "type": "lawn",
+   "polygon": [
+    [
+     25,
+     -265
+    ],
+    [
+     175,
+     -265
+    ],
+    [
+     175,
+     -245
+    ],
+    [
+     25,
+     -245
+    ]
+   ],
+   "name": "North Green Belt"
+  }
+ ]
+}

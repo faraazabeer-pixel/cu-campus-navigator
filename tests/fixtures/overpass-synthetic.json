@@ -1,0 +1,362 @@
+{
+ "version": 0.6,
+ "generator": "synthetic test fixture",
+ "elements": [
+  {
+   "type": "way",
+   "id": 1001,
+   "tags": {
+    "building": "university",
+    "name": "Test Library",
+    "amenity": "library",
+    "building:levels": "4"
+   },
+   "geometry": [
+    {
+     "lat": 30.7669123,
+     "lon": 76.5778909
+    },
+    {
+     "lat": 30.7669123,
+     "lon": 76.5783091
+    },
+    {
+     "lat": 30.7666877,
+     "lon": 76.5783091
+    },
+    {
+     "lat": 30.7666877,
+     "lon": 76.5778909
+    },
+    {
+     "lat": 30.7669123,
+     "lon": 76.5778909
+    }
+   ]
+  },
+  {
+   "type": "way",
+   "id": 1002,
+   "tags": {
+    "building": "dormitory",
+    "name": "Test Boys Hostel",
+    "height": "21"
+   },
+   "geometry": [
+    {
+     "lat": 30.7669123,
+     "lon": 76.5790932
+    },
+    {
+     "lat": 30.7669123,
+     "lon": 76.5796159
+    },
+    {
+     "lat": 30.7666877,
+     "lon": 76.5796159
+    },
+    {
+     "lat": 30.7666877,
+     "lon": 76.5790932
+    },
+    {
+     "lat": 30.7669123,
+     "lon": 76.5790932
+    }
+   ]
+  },
+  {
+   "type": "way",
+   "id": 1003,
+   "tags": {
+    "building": "yes",
+    "name": "Test Admin Office"
+   },
+   "geometry": [
+    {
+     "lat": 30.7660814,
+     "lon": 76.5779432
+    },
+    {
+     "lat": 30.7660814,
+     "lon": 76.5782568
+    },
+    {
+     "lat": 30.7659017,
+     "lon": 76.5782568
+    },
+    {
+     "lat": 30.7659017,
+     "lon": 76.5779432
+    },
+    {
+     "lat": 30.7660814,
+     "lon": 76.5779432
+    }
+   ]
+  },
+  {
+   "type": "way",
+   "id": 1004,
+   "tags": {
+    "building": "yes"
+   },
+   "geometry": [
+    {
+     "lat": 30.7660814,
+     "lon": 76.57925
+    },
+    {
+     "lat": 30.7660814,
+     "lon": 76.5794591
+    },
+    {
+     "lat": 30.7659017,
+     "lon": 76.5794591
+    },
+    {
+     "lat": 30.7659017,
+     "lon": 76.57925
+    },
+    {
+     "lat": 30.7660814,
+     "lon": 76.57925
+    }
+   ]
+  },
+  {
+   "type": "way",
+   "id": 1005,
+   "tags": {
+    "leisure": "pitch",
+    "sport": "cricket",
+    "name": "Test Cricket Pitch"
+   },
+   "geometry": [
+    {
+     "lat": 30.7666653,
+     "lon": 76.5802954
+    },
+    {
+     "lat": 30.7666653,
+     "lon": 76.5809227
+    },
+    {
+     "lat": 30.7662161,
+     "lon": 76.5809227
+    },
+    {
+     "lat": 30.7662161,
+     "lon": 76.5802954
+    },
+    {
+     "lat": 30.7666653,
+     "lon": 76.5802954
+    }
+   ]
+  },
+  {
+   "type": "way",
+   "id": 1006,
+   "tags": {
+    "amenity": "parking",
+    "name": "Test Parking"
+   },
+   "geometry": [
+    {
+     "lat": 30.7665754,
+     "lon": 76.5768455
+    },
+    {
+     "lat": 30.7665754,
+     "lon": 76.5772636
+    },
+    {
+     "lat": 30.7663059,
+     "lon": 76.5772636
+    },
+    {
+     "lat": 30.7663059,
+     "lon": 76.5768455
+    },
+    {
+     "lat": 30.7665754,
+     "lon": 76.5768455
+    }
+   ]
+  },
+  {
+   "type": "way",
+   "id": 1007,
+   "tags": {
+    "highway": "service",
+    "name": "Test Lane"
+   },
+   "geometry": [
+    {
+     "lat": 30.7663508,
+     "lon": 76.5774727
+    },
+    {
+     "lat": 30.7663508,
+     "lon": 76.5787273
+    },
+    {
+     "lat": 30.7663508,
+     "lon": 76.5799818
+    },
+    {
+     "lat": 30.7663508,
+     "lon": 76.5812364
+    }
+   ]
+  },
+  {
+   "type": "way",
+   "id": 1008,
+   "tags": {
+    "highway": "footway",
+    "name": "Library Path"
+   },
+   "geometry": [
+    {
+     "lat": 30.7663508,
+     "lon": 76.5781
+    },
+    {
+     "lat": 30.7666203,
+     "lon": 76.5781
+    }
+   ]
+  },
+  {
+   "type": "way",
+   "id": 1009,
+   "tags": {
+    "highway": "footway",
+    "name": "Hostel Path"
+   },
+   "geometry": [
+    {
+     "lat": 30.7663508,
+     "lon": 76.5793545
+    },
+    {
+     "lat": 30.7666203,
+     "lon": 76.5793545
+    }
+   ]
+  },
+  {
+   "type": "way",
+   "id": 1010,
+   "tags": {
+    "highway": "footway",
+    "name": "Admin Path"
+   },
+   "geometry": [
+    {
+     "lat": 30.7663508,
+     "lon": 76.5781
+    },
+    {
+     "lat": 30.7660993,
+     "lon": 76.5781
+    }
+   ]
+  },
+  {
+   "type": "way",
+   "id": 1011,
+   "tags": {
+    "highway": "footway",
+    "name": "Pitch Path"
+   },
+   "geometry": [
+    {
+     "lat": 30.7663508,
+     "lon": 76.5806091
+    },
+    {
+     "lat": 30.766243,
+     "lon": 76.5806091
+    }
+   ]
+  },
+  {
+   "type": "way",
+   "id": 1012,
+   "tags": {
+    "highway": "steps",
+    "name": "Test Steps"
+   },
+   "geometry": [
+    {
+     "lat": 30.7663508,
+     "lon": 76.5774727
+    },
+    {
+     "lat": 30.7663508,
+     "lon": 76.5772636
+    }
+   ]
+  },
+  {
+   "type": "way",
+   "id": 1013,
+   "tags": {
+    "highway": "footway",
+    "footway": "crossing"
+   },
+   "geometry": [
+    {
+     "lat": 30.7663958,
+     "lon": 76.5777864
+    },
+    {
+     "lat": 30.7663059,
+     "lon": 76.5777864
+    }
+   ]
+  },
+  {
+   "type": "way",
+   "id": 1014,
+   "tags": {
+    "landuse": "grass"
+   },
+   "geometry": [
+    {
+     "lat": 30.7659017,
+     "lon": 76.5783091
+    },
+    {
+     "lat": 30.7659017,
+     "lon": 76.5791455
+    },
+    {
+     "lat": 30.7655424,
+     "lon": 76.5791455
+    },
+    {
+     "lat": 30.7655424,
+     "lon": 76.5783091
+    },
+    {
+     "lat": 30.7659017,
+     "lon": 76.5783091
+    }
+   ]
+  },
+  {
+   "type": "node",
+   "id": 1,
+   "lat": 30.7663508,
+   "lon": 76.5774727,
+   "tags": {
+    "barrier": "gate",
+    "name": "Test Gate 9"
+   }
+  }
+ ]
+}

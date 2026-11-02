@@ -1,0 +1,28 @@
+# Node modules and package archives
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+cu-campus-nav-updated.zip
+
+# Git repository
+.git
+.gitignore
+
+# Operating system and editor artifacts
+.DS_Store
+Thumbs.db
+.vscode
+.idea
+
+# Local build artifacts (must be built fresh inside container for Linux)
+build/
+cmake-build-*/
+
+# Documentation screenshots (not needed in container)
+docs/screenshots/
+
+# Offline capture and test artifacts
+*.png
+*.svg
+*.log

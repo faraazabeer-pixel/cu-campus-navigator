@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CU Campus Navigator · 3D shortest-path finder</title>
+<meta name="description" content="Interactive 3D campus map and walking route finder for Chandigarh University, Mohali. C++ Dijkstra routing, Three.js rendering. Layout is an estimate - see data quality.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232f5bff'/%3E%3Cpath d='M9 22l7-14 7 14-7-4z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div id="app">
+  <div id="stage" aria-label="3D campus map"></div>
+  <div id="labels" aria-hidden="false"></div>
+
+  <aside id="panel" class="glass" aria-label="Route planner">
+    <button id="sheetHandle" class="sheet-handle" aria-label="Expand or collapse panel"><span></span></button>
+    <header class="brand">
+      <div class="logo" aria-hidden="true"><svg viewBox="0 0 32 32" width="26" height="26"><path d="M7 23l9-17 9 17-9-5z" fill="currentColor"/></svg></div>
+      <div class="titles"><h1>Campus Navigator</h1><p>Chandigarh University · Mohali</p></div>
+      <button id="themeBtn" class="icon-btn" aria-label="Toggle day / dusk lighting" title="Day / dusk"><svg viewBox="0 0 24 24"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg></button>
+    </header>
+
+    <section class="planner" aria-label="Find a route">
+      <div class="fields">
+        <div class="field" data-field="from">
+          <span class="pin a">A</span>
+          <input id="fromInput" type="text" autocomplete="off" spellcheck="false" placeholder="Start: search a building or gate" role="combobox" aria-expanded="false" aria-controls="suggest" aria-label="Start location">
+          <button class="icon-btn pick" data-pick="from" title="Pick on map" aria-label="Pick start on map"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" fill="currentColor"/></svg></button>
+          <button class="icon-btn clear" data-clear="from" title="Clear" aria-label="Clear start" hidden>×</button>
+        </div>
+        <button id="swapBtn" class="swap icon-btn" title="Swap start and destination" aria-label="Swap start and destination"><svg viewBox="0 0 24 24"><path d="M7 4v16m0 0l-3-3m3 3l3-3M17 20V4m0 0l-3 3m3-3l3 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="field" data-field="to">
+          <span class="pin b">B</span>
+          <input id="toInput" type="text" autocomplete="off" spellcheck="false" placeholder="Destination" role="combobox" aria-expanded="false" aria-controls="suggest" aria-label="Destination">
+          <button class="icon-btn pick" data-pick="to" title="Pick on map" aria-label="Pick destination on map"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" fill="currentColor"/></svg></button>
+          <button class="icon-btn clear" data-clear="to" title="Clear" aria-label="Clear destination" hidden>×</button>
+        </div>
+      </div>
+      <ul id="suggest" role="listbox" hidden></ul>
+      <div class="row">
+        <div class="seg" role="radiogroup" aria-label="Route type">
+          <button class="on" data-profile="walk" role="radio" aria-checked="true">Shortest</button>
+          <button data-profile="accessible" role="radio" aria-checked="false" title="Avoids stairs">Step-free</button>
+        </div>
+        <button id="clearBtn" class="link-btn" hidden>Reset</button>
+      </div>
+      <div id="chips" class="chips" aria-label="Quick picks"></div>
+
+      <button id="dataBanner" class="data-notice" type="button" aria-label="Data Accuracy Notice: Estimated building positions and unverified walking distances">
+        <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><line x1="12" y1="16" x2="12" y2="12" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="8" r="1" fill="currentColor"/></svg>
+        <span><b>Data Accuracy Notice:</b> Estimated building positions & unverified walking distances. <u>Details</u></span>
+      </button>
+    </section>
+
+    <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+
+    <section id="result" class="result" hidden>
+      <div class="summary">
+        <div><div class="big" id="distBig">–</div><div class="sub" id="timeBig">–</div></div>
+        <div class="actions">
+          <button id="visualizeBtn" class="primary vis-btn" title="Inspect Dijkstra step-by-step"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M13 2.05v2.02c3.95.49 7 3.85 7 7.93 0 3.21-1.92 6-4.72 7.28L14 17l-1 5 5-2-1.37-1.37C20.12 16.89 22 13.68 22 10c0-5.18-3.95-9.45-9-9.95zM11 2.05C5.95 2.55 2 6.82 2 12c0 3.68 1.88 6.89 4.63 8.63L5.26 22l5-2-1-5-1.28 2.28C5.92 16 4 13.21 4 10c0-4.08 3.05-7.44 7-7.93v-.02z" fill="currentColor"/></svg>Dijkstra Visualizer</button>
+          <button id="flyBtn" class="ghost"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 4l13 8-13 8z" fill="currentColor"/></svg>Preview walk</button>
+          <button id="shareBtn" class="ghost" title="Copy a link to this route">Share</button>
+        </div>
+      </div>
+      <p class="engine-note" id="engineNote"></p>
+      <ol id="steps" class="steps"></ol>
+    </section>
+
+    <section id="info" class="info" hidden></section>
+  </aside>
+
+  <!-- Dijkstra Visualizer Dockable Panel -->
+  <aside id="visualizerPanel" class="glass vis-panel" aria-label="Dijkstra Algorithm Visualizer" hidden>
+    <div class="vis-header">
+      <div class="vis-title-group">
+        <span class="vis-icon">⚡</span>
+        <div>
+          <h2>Dijkstra Visualizer</h2>
+          <span class="vis-subtitle">Step-by-step C++ algorithm execution</span>
+        </div>
+      </div>
+      <div class="vis-header-actions">
+        <span id="visStepCounter" class="vis-step-counter">0 / 0</span>
+        <button id="visCloseBtn" class="icon-btn" aria-label="Close visualizer" title="Close visualizer">×</button>
+      </div>
+    </div>
+
+    <!-- Active Step Notification Card -->
+    <div class="vis-step-card">
+      <div class="vis-step-header">
+        <span id="visTypeBadge" class="vis-badge badge-init">INIT</span>
+      </div>
+      <div id="visEventText" class="vis-event-text">Select a route to visualize Dijkstra's algorithm.</div>
+    </div>
+
+    <!-- Playback Controls -->
+    <div class="vis-controls">
+      <div class="vis-btn-group">
+        <button id="visResetBtn" class="vis-ctrl-btn" title="Reset to start">⏮</button>
+        <button id="visStepBackBtn" class="vis-ctrl-btn" title="Step backward">◀</button>
+        <button id="visPlayBtn" class="vis-ctrl-btn vis-primary-btn" title="Play / Pause">
+          <svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+          <span>Play</span>
+        </button>
+        <button id="visStepFwdBtn" class="vis-ctrl-btn" title="Step forward">▶</button>
+      </div>
+
+      <div class="vis-speed-group" role="radiogroup" aria-label="Playback speed">
+        <button class="vis-speed-btn" data-speed="0.5">0.5x</button>
+        <button class="vis-speed-btn active" data-speed="1.0">1x</button>
+        <button class="vis-speed-btn" data-speed="2.0">2x</button>
+        <button class="vis-speed-btn" data-speed="5.0">5x</button>
+      </div>
+    </div>
+
+    <!-- Progress Scrubber -->
+    <div class="vis-scrubber-container">
+      <input type="range" id="visScrubber" min="0" max="0" value="0" aria-label="Algorithm progress scrubber">
+    </div>
+
+    <!-- Metrics Bar -->
+    <div class="vis-metrics">
+      <div class="vis-metric">
+        <span class="vis-metric-label">Settled Nodes</span>
+        <span id="visStatVisited" class="vis-metric-val">0</span>
+      </div>
+      <div class="vis-metric">
+        <span class="vis-metric-label">Priority Queue</span>
+        <span id="visStatPqSize" class="vis-metric-val">0</span>
+      </div>
+      <div class="vis-metric">
+        <span class="vis-metric-label">Path Cost</span>
+        <span id="visStatCost" class="vis-metric-val">0.0 m</span>
+      </div>
+    </div>
+
+    <!-- Inspector Tabs -->
+    <div class="vis-tabs">
+      <button class="vis-tab-btn active" data-tab="pq">Priority Queue (Min-Heap)</button>
+      <button class="vis-tab-btn" data-tab="dist">Tentative Distances</button>
+    </div>
+
+    <!-- Tab 1: Priority Queue -->
+    <div class="vis-tab-pane active" data-pane="pq">
+      <div class="vis-table-scroll">
+        <table id="visPqTable" class="vis-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Node</th>
+              <th>Dist</th>
+              <th>Prev</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td colspan="4" class="empty">Priority queue is empty</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Tab 2: Tentative Distances -->
+    <div class="vis-tab-pane" data-pane="dist">
+      <div class="vis-table-scroll">
+        <table id="visDistTable" class="vis-table">
+          <thead>
+            <tr>
+              <th>Node</th>
+              <th>Dist</th>
+              <th>Prev</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td colspan="4" class="empty">No tentative distances</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </aside>
+
+  <div id="mapTools" class="map-tools">
+    <button id="compass" class="glass round" aria-label="Reset view to north" title="Reset view"><svg id="compassNeedle" viewBox="0 0 32 32" width="30" height="30"><path d="M16 3l5 13h-10z" fill="#e5484d"/><path d="M16 29l-5-13h10z" fill="#8b97ab"/><circle cx="16" cy="16" r="2" fill="#fff"/></svg></button>
+    <div class="glass tools-group">
+      <button id="viewTop" title="Top-down view">2D</button>
+      <button id="view3d" title="3D view" class="on">3D</button>
+    </div>
+
+    <!-- Drag Mode: Orbit vs Pan -->
+    <div class="glass tools-group" role="group" aria-label="Drag mode">
+      <button id="dragRotateBtn" class="on" title="Orbit Mode: drag to rotate, right-click or Space+drag to pan">Orbit</button>
+      <button id="dragPanBtn" title="Pan Mode: drag to slide map, right-click to rotate">Pan</button>
+    </div>
+
+    <!-- Zoom Controls -->
+    <div class="glass tools-group col" role="group" aria-label="Zoom controls">
+      <button id="zoomInBtn" class="zoom-btn" title="Zoom in (+ or pinch out)" aria-label="Zoom in">+</button>
+      <button id="zoomOutBtn" class="zoom-btn" title="Zoom out (− or pinch in)" aria-label="Zoom out">−</button>
+    </div>
+
+    <div class="glass tools-group col" role="group" aria-label="Map layers">
+      <button class="on" data-layer="labels" title="Building labels">Labels</button>
+      <button class="on" data-layer="trees" title="Trees">Trees</button>
+      <button data-layer="graph" title="Show the routing graph used by Dijkstra">Graph</button>
+      <button id="visMapBtn" title="Toggle Dijkstra Visualizer">Dijkstra</button>
+    </div>
+
+    <button id="navHelpBtn" class="glass round mini" title="Mouse & Trackpad Navigation Guide" aria-label="Navigation guide">?</button>
+  </div>
+
+  <!-- Mouse & Trackpad Navigation Guide Card -->
+  <div id="navHelpCard" class="glass nav-help-card" hidden>
+    <div class="nav-help-header">
+      <div class="nav-help-title"><b>Navigation Guide</b></div>
+      <button id="navHelpClose" class="icon-btn close-mini" aria-label="Close guide">×</button>
+    </div>
+    <div class="nav-help-body">
+      <div class="nav-help-row">
+        <span class="nav-help-icon">🤏</span>
+        <div><b>Pinch to Zoom</b><p>Pinch inward to zoom in · Outward motion to zoom out</p></div>
+      </div>
+      <div class="nav-help-row">
+        <span class="nav-help-icon">✌️</span>
+        <div><b>Two-Finger Pan</b><p>Swipe 2 fingers on trackpad to slide across the campus</p></div>
+      </div>
+      <div class="nav-help-row">
+        <span class="nav-help-icon">🖱️</span>
+        <div><b>Click &amp; Drag</b><p>Left drag to orbit · Right drag, Shift+drag, or Space+drag to pan</p></div>
+      </div>
+      <div class="nav-help-row">
+        <span class="nav-help-icon">👆👆</span>
+        <div><b>Double Click</b><p>Double-click any spot or building to zoom in</p></div>
+      </div>
+      <div class="nav-help-row">
+        <span class="nav-help-icon">⌨️</span>
+        <div><b>Keyboard</b><p><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or arrows pan · <kbd>Q</kbd><kbd>E</kbd> rotate · <kbd>+</kbd><kbd>−</kbd> zoom</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="mapMenu" class="glass menu" hidden>
+    <div class="menu-title" id="menuTitle">Map point</div>
+    <button id="menuFrom">Start here</button><button id="menuTo">Go here</button>
+  </div>
+  <div id="pickHint" class="pick-hint glass" hidden>Click the map to choose a point · <kbd>Esc</kbd> to cancel</div>
+  <div id="toast" class="toast" role="alert" hidden></div>
+  <div id="loading" class="loading"><div class="spinner"></div><p>Building the campus…</p></div>
+
+  <dialog id="dataDialog" class="dialog">
+    <form method="dialog"><button class="close icon-btn" aria-label="Close">×</button></form>
+    <div id="dataContent"></div>
+  </dialog>
+</div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+cmake_minimum_required(VERSION 3.16)
+project(CampusRouteEngine VERSION 1.0.0 LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Release)
+endif()
+if(MSVC)
+  add_compile_options(/W4)
+else()
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+add_library(campus_engine STATIC
+  engine/src/graph.cpp engine/src/router.cpp engine/src/directions.cpp engine/src/protocol.cpp)
+target_include_directories(campus_engine PUBLIC engine/include)
+
+add_executable(route_engine engine/src/main.cpp)
+target_link_libraries(route_engine PRIVATE campus_engine)
+
+enable_testing()
+add_executable(engine_tests engine/tests/test_main.cpp)
+target_link_libraries(engine_tests PRIVATE campus_engine)
+add_test(NAME engine_tests COMMAND engine_tests ${CMAKE_SOURCE_DIR}/data/campus.json)

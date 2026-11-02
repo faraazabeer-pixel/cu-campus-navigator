@@ -1,0 +1,24 @@
+{
+  "name": "cu-campus-nav",
+  "version": "1.0.0",
+  "description": "3D campus navigation and shortest-path finder for Chandigarh University, Mohali (C++ Dijkstra engine + Node backend + Three.js frontend)",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build:engine": "bash scripts/build-engine.sh",
+    "build:data": "node tools/author-layout.mjs && node tools/build-campus.mjs",
+    "import:osm": "node tools/import-osm.mjs",
+    "start": "node server/server.mjs",
+    "dev": "node server/server.mjs",
+    "test": "bash scripts/run-tests.sh",
+    "test:engine": "bash scripts/build-engine.sh --test",
+    "test:node": "node --test tests/*.test.mjs",
+    "test:e2e": "node tests/e2e.mjs",
+    "package": "bash scripts/package-project.sh"
+  },
+  "devDependencies": {
+    "three": "0.174.0"
+  }
+}
